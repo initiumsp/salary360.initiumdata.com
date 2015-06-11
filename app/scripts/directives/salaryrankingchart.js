@@ -183,10 +183,10 @@ angular.module('salary360initiumdatacomApp')
               x.domain(data.map(function(d) { return d[0]; }));
               y.domain([0, 1.2 * d3.max(data, function(d) { return +d[1]; })]);
 
-              svg.append("g")
-                .attr("class", "x axis")
-                .attr("transform", "translate(0," + height + ")")
-                .call(xAxis);
+              //svg.append("g")
+              //  .attr("class", "x axis")
+              //  .attr("transform", "translate(0," + height + ")")
+              //  .call(xAxis);
 
               svg.append("g")
                 .attr("class", "y axis")
