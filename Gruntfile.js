@@ -381,6 +381,8 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>',
           src: [
             'CNAME',
+            'api/**/*.csv',
+            'api/**/*.json',
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
