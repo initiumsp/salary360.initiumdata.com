@@ -1,9 +1,1 @@
-
-<div class="row">
-  <div class="col-md-12">
-    <div salary-ranking-chart></div>
-
-    <svg class="chart" width="100%" height="300px"></svg>
-
-  </div>
-</div>
+<div class="row"> <div class="col-md-12"> <form action=""> <div class="form-group"> <label for="area">Area</label> <select name="" id="" ng-model="input.area" ng-options="v for v in options.area"></select> </div> <div class="form-group"> <label for="gender">Gender</label> <select name="" id="" ng-model="input.gender" ng-options="v for v in options.gender"></select> </div> <div class="form-group"> <label for="salary">Salary</label> <input type="text" ng-model="input.salary"> </div> </form> <div salary-ranking-chart area="{{input.area}}" gender="{{input.gender}}" salary="{{input.salary}}"> <div class="message"></div> <svg class="chart" width="100%" height="300px"></svg> </div> </div> </div>
