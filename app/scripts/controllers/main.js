@@ -16,8 +16,14 @@ angular.module('salary360initiumdatacomApp')
     ];
 
     $scope.input = {
-      area: 'c02',
+      area: 'a01',
       gender: 'both',
       salary: 11555
-    }
+    };
+
+    $scope.options = {
+      area: ['a01', 'b02', 'c03'],
+      gender: ['male', 'female', 'both']
+    };
+
   });

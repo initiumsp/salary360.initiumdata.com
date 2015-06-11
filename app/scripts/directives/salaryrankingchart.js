@@ -24,8 +24,7 @@ angular.module('salary360initiumdatacomApp')
         'salary': '@'
       },
       link: function(scope, element, attrs) {
-        (function(d3) {
-
+        var render = function(d3) {
           console.log(scope);
 
           var margin = {top: 20, right: 20, bottom: 30, left: 40};
@@ -50,6 +49,8 @@ angular.module('salary360initiumdatacomApp')
             .ticks(10, "%");
 
           var svg = d3.select(".chart");
+          svg.selectAll("g").remove();
+          svg.selectAll("rect").remove();
           svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -84,9 +85,9 @@ angular.module('salary360initiumdatacomApp')
                 .text("Monthly Income");
 
 
-              svg.selectAll(".bar")
-                .data(data)
-                .enter().append("rect")
+              var updates = svg.selectAll(".bar").data(data);
+              updates.exit().remove();
+              updates.enter().append("rect")
                 .attr("class", "bar")
                 .attr("x", function(d) { return x(d[0]); })
                 .attr("width", x.rangeBand())
@@ -98,8 +99,11 @@ angular.module('salary360initiumdatacomApp')
           //  d.frequency = +d.frequency;
           //  return d;
           //}
+        };
 
-        })(d3);
+        scope.$watch('area', function(){render(d3);});
+        scope.$watch('gender', function(){render(d3);});
+        scope.$watch('salary', function(){render(d3);});
       }};
   }]);
 
