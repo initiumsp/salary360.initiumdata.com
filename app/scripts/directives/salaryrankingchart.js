@@ -18,9 +18,15 @@ angular.module('salary360initiumdatacomApp')
   .directive('salaryRankingChart', [function() {
     return {
       restrict: 'EA',
-      scope: {},
+      scope: {
+        'area': '@',
+        'gender': '@',
+        'salary': '@'
+      },
       link: function(scope, element, attrs) {
         (function(d3) {
+
+          console.log(scope);
 
           var margin = {top: 20, right: 20, bottom: 30, left: 40};
           var actualWidth = document.querySelector('.chart').offsetWidth;
@@ -47,7 +53,10 @@ angular.module('salary360initiumdatacomApp')
           svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-          d3.csv('http://salary360.initiumdata.com/api/census2011/areas/b01/male/data.csv',
+          var api_url = 'http://salary360.initiumdata.com/api/census2011/areas/'
+            + scope.area + '/' + scope.gender + '/data.csv';
+
+          d3.csv(api_url,
             function(d){
               //window.d = d;
               //console.log('data:');

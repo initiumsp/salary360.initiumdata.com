@@ -14,4 +14,10 @@ angular.module('salary360initiumdatacomApp')
       'AngularJS',
       'Karma'
     ];
+
+    $scope.input = {
+      area: 'c02',
+      gender: 'both',
+      salary: 11555
+    }
   });
