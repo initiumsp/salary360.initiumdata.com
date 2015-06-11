@@ -1,12 +1,17 @@
 # salary360initiumdatacom
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+## Dependencies
 
-## Build & development
+* Python3
+* Then get the dependencies in virtualenv
 
-Run `grunt` for building and `grunt serve` for preview.
+## About Data
 
-## Testing
+Data is from HK Census 2011, gazetteer.hk project
 
-Running `grunt test` will run the unit tests with karma.
+Run the preparation script in the following path to generate API data:
+(already checked in the repo)
+
+```
+app/api/census2011
+```
