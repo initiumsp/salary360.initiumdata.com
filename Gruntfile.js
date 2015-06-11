@@ -15,6 +15,8 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  grunt.loadNpmTasks('grunt-gh-pages');
+
   // Configurable paths for the application
   var appConfig = {
     app: require('./bower.json').appPath || 'app',
@@ -23,6 +25,13 @@ module.exports = function (grunt) {
 
   // Define the configuration for all the tasks
   grunt.initConfig({
+
+    'gh-pages': {
+      options: {
+        base: 'dist'
+      },
+      src: ['**']
+    },
 
     // Project settings
     yeoman: appConfig,
@@ -371,6 +380,7 @@ module.exports = function (grunt) {
           cwd: '<%= yeoman.app %>',
           dest: '<%= yeoman.dist %>',
           src: [
+            'CNAME',
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
@@ -468,6 +478,11 @@ module.exports = function (grunt) {
     'usemin',
     'htmlmin'
   ]);
+
+  // This is for quick testing of Grunt tasks
+  grunt.registerTask('mytask', [
+    'copy:dist'
+  ])
 
   grunt.registerTask('default', [
     'newer:jshint',
