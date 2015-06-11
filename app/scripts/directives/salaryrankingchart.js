@@ -25,7 +25,7 @@ angular.module('salary360initiumdatacomApp')
       },
       link: function(scope, element, attrs) {
         var render = function(d3) {
-          console.log(scope);
+          //console.log(scope);
 
           var margin = {top: 20, right: 20, bottom: 30, left: 40};
           var actualWidth = document.querySelector('.chart').offsetWidth;
@@ -39,6 +39,7 @@ angular.module('salary360initiumdatacomApp')
           var y = d3.scale.linear()
             .range([height, 0]);
 
+
           var xAxis = d3.svg.axis()
             .scale(x)
             .orient("bottom");
@@ -49,7 +50,7 @@ angular.module('salary360initiumdatacomApp')
             .ticks(10, "%");
 
           var svg = d3.select(".chart");
-          svg.selectAll("g").remove();
+          //svg.selectAll("g").remove();
           svg.selectAll("rect").remove();
           svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");

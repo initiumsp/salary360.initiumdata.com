@@ -8,7 +8,7 @@
  * Controller of the salary360initiumdatacomApp
  */
 angular.module('salary360initiumdatacomApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -26,4 +26,9 @@ angular.module('salary360initiumdatacomApp')
       gender: ['male', 'female', 'both']
     };
 
-  });
+    $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-areas.json')
+      .success(function(d){
+        $scope.options.area = _.map(d, function(value, key){return key})
+      });
+
+  }]);
