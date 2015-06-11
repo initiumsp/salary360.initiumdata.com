@@ -30,6 +30,23 @@ angular.module('salary360initiumdatacomApp')
       gender: ['male', 'female', 'both']
     };
 
+    // TODO: can migrate to i18n
+
+    $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-areas.json')
+      .success(function(d){
+        $scope.translationAreas = d;
+      });
+
+    $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-districts.json')
+      .success(function(d){
+        $scope.translationDistricts = d;
+      });
+
+    $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-regions.json')
+      .success(function(d){
+        $scope.translationRegions = d;
+      });
+
     $http.get('http://salary360.initiumdata.com/api/census2011/geo/geo-tree.json')
       .success(function(d){
         $scope.geoTree = d;

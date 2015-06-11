@@ -4,15 +4,15 @@
     <form action="">
       <div class="form-group">
         <label for="region">Region</label>
-        <select name="" id="" ng-model="input.region" ng-options="v for v in options.region" ng-change="getDistrictByRegion()"></select>
+        <select name="" id="" ng-model="input.region" ng-options="translationRegions[v].T for v in options.region track by v" ng-change="getDistrictByRegion()"></select>
       </div>
       <div class="form-group">
         <label for="district">District</label>
-        <select name="" id="" ng-model="input.district" ng-options="v for v in options.district" ng-change="getAreaByDistrict()"></select>
+        <select name="" id="" ng-model="input.district" ng-options="translationDistricts[v].T for v in options.district track by v" ng-change="getAreaByDistrict()"></select>
       </div>
       <div class="form-group">
         <label for="area">Area</label>
-        <select name="" id="" ng-model="input.area" ng-options="v for v in options.area"></select>
+        <select name="" id="" ng-model="input.area" ng-options="translationAreas[v].T for v in options.area track by v"></select>
       </div>
       <div class="form-group">
         <label for="gender" >Gender</label>
