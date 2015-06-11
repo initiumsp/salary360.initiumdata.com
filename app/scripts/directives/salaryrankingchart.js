@@ -45,7 +45,7 @@ angular.module('salary360initiumdatacomApp')
 
           var x = d3.scale.linear()
             .domain([0, d3.max(data)])
-            .range([0, height]);
+            .range([height, 0]);
 
           var chart = d3.select(".chart")
             .attr("width", width)
@@ -55,7 +55,7 @@ angular.module('salary360initiumdatacomApp')
             .data(data)
             .enter().append("g")
             .attr("transform", function(d, i) {
-              return "translate(" + i * barWidth + "," + (height - 10) + "),rotate(180," + barWidth/2 + ",0)";
+              return "translate(" + i * barWidth + ",0)";
             });
             //.attr("transform", function(d, i){
             //  return "rotate(180)";
@@ -63,13 +63,15 @@ angular.module('salary360initiumdatacomApp')
 
           bar.append("rect")
             .attr("height", function(d){
-              // A shortcut: Replace this function with "x"
-              return x(d) + "px";
+              return height - x(d);
+            })
+            .attr("y", function(d){
+              return x(d);
             })
             .attr("width", barWidth - 1);
 
           bar.append("text")
-            .attr("y", function(d) { return x(d) / 2; })
+            .attr("y", function(d) { return height - (height - x(d)) / 2; })
             .attr("x", barWidth / 2)
             .attr("dx", "0.35em")
             .text(function(d) { return d; });
