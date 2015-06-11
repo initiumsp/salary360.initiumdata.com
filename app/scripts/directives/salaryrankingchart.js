@@ -22,73 +22,55 @@ angular.module('salary360initiumdatacomApp')
       link: function(scope, element, attrs) {
         (function(d3) {
 
-          var margin = {top: 20, right: 20, bottom: 30, left: 50},
-            width = 600 - margin.left - margin.right,
-            height = 700 - margin.top - margin.bottom;
+          //var data = [
+          //  ['< 2,000'        ,  '40' ],
+          //  ['2,000 - 3,999'  ,  '142'],
+          //  ['4,000 - 5,999'  ,  '116'],
+          //  ['6,000 - 7,999'  ,  '197'],
+          //  ['8,000 - 9,999'  ,  '362'],
+          //  ['10,000 - 14,999',  '812'],
+          //  ['15,000 - 19,999',  '611'],
+          //  ['20,000 - 24,999',  '416'],
+          //  ['25,000 - 29,999',  '241'],
+          //  ['30,000 - 39,999',  '278'],
+          //  ['40,000 - 59,999',  '451'],
+          //  ['≧ 60,000'       ,  '804']
+          //]
 
-          var parseDate = d3.time.format('%d-%b-%y').parse;
+          var data = [4, 8, 15, 16, 23, 42];
 
-          var x = d3.time.scale()
-            .range([0, width]);
+          var barWidth = 20;
+          var width = data.length * barWidth;
+          var height = d3.max(data) * 16;
 
-          var y = d3.scale.linear()
-            .range([height, 0]);
+          var x = d3.scale.linear()
+            .domain([0, data.length - 1])
+            .range([0, d3.max(data)]);
 
-          var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient('bottom');
+          var chart = d3.select(".chart")
+            .attr("width", width)
+            .attr("height", height);
 
-          var yAxis = d3.svg.axis()
-            .scale(y)
-            .orient('left');
+          var bar = chart.selectAll("g")
+            .data(data)
+            .enter().append("g")
+            .attr("transform", function(d, i) {
+              return "translate(" + i * barWidth + "," + (height - 10) + "),rotate(180," + barWidth/2 + ",0)";
+            });
+            //.attr("transform", function(d, i){
+            //  return "rotate(180)";
+            //});
 
-          var line = d3.svg.line()
-            .x(function(d) { return x(d.date); })
-            .y(function(d) { return y(d.close); });
+          bar.append("rect")
+            .attr("height", x)
+            .attr("width", barWidth - 1);
 
-          var svg = d3.select(element[0]).append('svg')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-            .append('g')
-            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+          bar.append("text")
+            .attr("y", function(d) { return x(d) / 2; })
+            .attr("x", barWidth / 2)
+            .attr("dx", "0.35em")
+            .text(function(d) { return d; });
 
-          // Hard coded data
-          scope.data = [
-            {date: '4-Apr-12', close: 34},
-            {date: '5-Apr-12', close: 45},
-            {date: '6-Apr-12', close: 37},
-            {date: '7-Apr-12', close: 56},
-            {date: '8-Apr-12', close: 50},
-            {date: '9-Apr-12', close: 77}
-          ];
-
-          scope.data.forEach(function(d) {
-            d.date = parseDate(d.date);
-            d.close = +d.close;
-          });
-
-          x.domain(d3.extent(scope.data, function(d) { return d.date; }));
-          y.domain(d3.extent(scope.data, function(d) { return d.close; }));
-
-          svg.append('g')
-            .attr('class', 'x axis')
-            .attr('transform', 'translate(0,' + height + ')')
-            .call(xAxis);
-
-          svg.append('g')
-            .attr('class', 'y axis')
-            .call(yAxis)
-            .append('text')
-            .attr('transform', 'rotate(-90)')
-            .attr('y', 6)
-            .attr('dy', '.71em')
-            .style('text-anchor', 'end')
-            .text('Price ($)');
-
-          svg.append('path')
-            .datum(scope.data)
-            .attr('class', 'line')
-            .attr('d', line);
         })(d3);
       }};
   }]);

@@ -8,3 +8,38 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.5em;
   border-top: 1px dashed grey;
 }
+
+/* D3 */
+
+//.bar {
+//  fill: steelblue;
+//}
+//
+//.bar:hover {
+//  fill: brown;
+//}
+//
+//.axis {
+//  font: 10px sans-serif;
+//}
+//
+//.axis path,
+//.axis line {
+//  fill: none;
+//  stroke: #000;
+//  shape-rendering: crispEdges;
+//}
+//
+//.x.axis path {
+//  display: none;
+//}
+
+.chart rect {
+  fill: steelblue;
+}
+
+.chart text {
+  fill: white;
+  font: 10px sans-serif;
+  text-anchor: end;
+}
