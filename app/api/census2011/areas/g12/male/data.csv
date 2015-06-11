@@ -1,0 +1,13 @@
+region,district,area,table,row,column,value,row_no
+kl,g,g12,5,a78_<,c77_male,0.0,78
+kl,g,g12,5,a80_2000,c77_male,100.0,80
+kl,g,g12,5,a82_4000,c77_male,139.0,82
+kl,g,g12,5,a84_6000,c77_male,351.0,84
+kl,g,g12,5,a86_8000,c77_male,598.0,86
+kl,g,g12,5,a88_10000,c77_male,1641.0,88
+kl,g,g12,5,a90_15000,c77_male,542.0,90
+kl,g,g12,5,a92_20000,c77_male,375.0,92
+kl,g,g12,5,a94_25000,c77_male,243.0,94
+kl,g,g12,5,a96_30000,c77_male,171.0,96
+kl,g,g12,5,a98_40000,c77_male,106.0,98
+kl,g,g12,5,a100_>=,c77_male,40.0,100
