@@ -16,7 +16,7 @@
       </div>
       <div class="form-group">
         <label for="gender" >Gender</label>
-        <select name="" id="" ng-model="input.gender" ng-options="v for v in options.gender"></select>
+        <select name="" id="" ng-model="input.gender" ng-options="translationGenders[v].T for v in options.gender track by v"></select>
       </div>
       <div class="form-group">
         <label for="salary">Salary</label>

@@ -47,10 +47,17 @@ angular.module('salary360initiumdatacomApp')
         $scope.translationRegions = d;
       });
 
+    $scope.translationGenders = {
+      male: {T: '男性'},
+      female: {T: '女性'},
+      both: {T: '所有人'},
+    }
+
     $http.get('http://salary360.initiumdata.com/api/census2011/geo/geo-tree.json')
       .success(function(d){
         $scope.geoTree = d;
       });
+
 
     $scope.getDistrictByRegion = function(){
       $scope.options.district = _.map($scope.geoTree[$scope.input.region], function(value, key){return key;});

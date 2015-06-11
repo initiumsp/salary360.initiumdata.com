@@ -174,8 +174,13 @@ angular.module('salary360initiumdatacomApp')
 
               var message = d3.select('.message');
               message.selectAll('div').remove();
+              var genderToName = {
+                'male': '男性',
+                'female': '女性',
+                'both': '人',
+              };
               message.append('div')
-                .text('You beat ' + Math.floor(ranking.ratio * 100) + '% of the ' + scope.gender + ' in your area')
+                .text('您的月收入擊敗了該區' + Math.floor(ranking.ratio * 100) + '% 的' + genderToName[scope.gender])
                 .attr('class', 'message');
 
               //ranking['ratio']
