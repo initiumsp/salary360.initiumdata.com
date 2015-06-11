@@ -29,6 +29,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 }
 
+.message {
+  padding: 0.5em;
+  margin: 0.5em;
+  color: red;
+  //background: cornflowerblue;
+}
 
 .axis {
   font: 10px sans-serif;
@@ -44,4 +50,5 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 .x.axis path {
   display: none;
 }
+
 

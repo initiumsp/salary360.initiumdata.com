@@ -168,7 +168,16 @@ angular.module('salary360initiumdatacomApp')
               });
 
               var ranking = calculateRanking(d, scope.salary, salaryRangeMapping);
-              console.log(ranking);
+              //console.log(ranking);
+              //document.querySelector('.message').appendChild()
+
+              var message = d3.select('.message');
+              message.selectAll('div').remove();
+              message.append('div')
+                .text('You beat ' + Math.floor(ranking['ratio'] * 100) + '% of the ' + scope.gender + ' in your area')
+                .attr('class', 'message');
+
+              //ranking['ratio']
 
               x.domain(data.map(function(d) { return d[0]; }));
               y.domain([0, 1.2 * d3.max(data, function(d) { return +d[1]; })]);
