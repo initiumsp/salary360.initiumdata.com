@@ -24,6 +24,105 @@ angular.module('salary360initiumdatacomApp')
         'salary': '@'
       },
       link: function(scope, element, attrs) {
+
+        var salaryRangeMapping = [
+          [
+            -1,
+            "< 2000",
+            "a78_<",
+            "78"
+          ],
+          [
+            2000,
+            "2000 - 3999",
+            "a80_2000",
+            "80"
+          ],
+          [
+            4000,
+            "4000 - 5999",
+            "a82_4000",
+            "82"
+          ],
+          [
+            6000,
+            "6000 - 7999",
+            "a84_6000",
+            "84"
+          ],
+          [
+            8000,
+            "8000 - 9999",
+            "a86_8000",
+            "86"
+          ],
+          [
+            10000,
+            "10000 - 14999",
+            "a88_10000",
+            "88"
+          ],
+          [
+            15000,
+            "15000 - 19999",
+            "a90_15000",
+            "90"
+          ],
+          [
+            20000,
+            "20000 - 24999",
+            "a92_20000",
+            "92"
+          ],
+          [
+            25000,
+            "25000 - 29999",
+            "a94_25000",
+            "94"
+          ],
+          [
+            30000,
+            "30000 - 39999",
+            "a96_30000",
+            "96"
+          ],
+          [
+            40000,
+            "40000 - 59999",
+            "a98_40000",
+            "98"
+          ],
+          [
+            60000,
+            ">= 60000",
+            "a100_>=",
+            "100"
+          ]
+        ];
+
+        var calculateRanking = function(areaProfile, salary, salaryRangeMapping){
+          var cummulative = 0.0;
+          var total = 0.0;
+          var binID = 0;
+          var binName = areaProfile[0].row;
+          for (var i = 1; i < salaryRangeMapping.length; i++) {
+            var value = parseInt(areaProfile[i - 1].value);
+            total += value;
+            if (salaryRangeMapping[i][0] <= salary) {
+              cummulative += value;
+              binID = i;
+              binName = areaProfile[i].row;
+            }
+          }
+          return {
+            binID: binID,
+            binName: binName,
+            cummulative: cummulative,
+            total: total,
+            ratio: cummulative / total
+          }
+        };
+
         var render = function(d3) {
           //console.log(scope);
 
@@ -67,6 +166,9 @@ angular.module('salary360initiumdatacomApp')
                 return [x.row, x.value]
               });
 
+              var ranking = calculateRanking(d, scope.salary, salaryRangeMapping);
+              console.log(ranking);
+
               x.domain(data.map(function(d) { return d[0]; }));
               y.domain([0, d3.max(data, function(d) { return +d[1]; })]);
 
@@ -85,7 +187,6 @@ angular.module('salary360initiumdatacomApp')
                 .style("text-anchor", "end")
                 .text("Monthly Income");
 
-
               var updates = svg.selectAll(".bar").data(data);
               updates.exit().remove();
               updates.enter().append("rect")
@@ -94,6 +195,13 @@ angular.module('salary360initiumdatacomApp')
                 .attr("width", x.rangeBand())
                 .attr("y", function(d) { return y(d[1]); })
                 .attr("height", function(d) { return height - y(d[1]); });
+              window.u = updates;
+              d3.selectAll(".bar").filter(function(d, i){
+                console.log("once");
+                console.log(d);
+                console.log(ranking);
+                return d[0] === ranking['binName'];
+              }).attr("class", "bar highlight");
             });
 
           //function type(d) {
