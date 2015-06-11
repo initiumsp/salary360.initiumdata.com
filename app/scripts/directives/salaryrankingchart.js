@@ -35,7 +35,7 @@ angular.module('salary360initiumdatacomApp')
             ['30,000 - 39,999',  '278'],
             ['40,000 - 59,999',  '451'],
             ['≧ 60,000'       ,  '804']
-          ]
+          ];
 
           var margin = {top: 20, right: 20, bottom: 30, left: 40};
           var actualWidth = document.querySelector('.chart').offsetWidth;
