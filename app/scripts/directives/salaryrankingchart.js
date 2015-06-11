@@ -22,59 +22,77 @@ angular.module('salary360initiumdatacomApp')
       link: function(scope, element, attrs) {
         (function(d3) {
 
-          //var data = [
-          //  ['< 2,000'        ,  '40' ],
-          //  ['2,000 - 3,999'  ,  '142'],
-          //  ['4,000 - 5,999'  ,  '116'],
-          //  ['6,000 - 7,999'  ,  '197'],
-          //  ['8,000 - 9,999'  ,  '362'],
-          //  ['10,000 - 14,999',  '812'],
-          //  ['15,000 - 19,999',  '611'],
-          //  ['20,000 - 24,999',  '416'],
-          //  ['25,000 - 29,999',  '241'],
-          //  ['30,000 - 39,999',  '278'],
-          //  ['40,000 - 59,999',  '451'],
-          //  ['≧ 60,000'       ,  '804']
-          //]
+          var data = [
+            ['< 2,000'        ,  '40' ],
+            ['2,000 - 3,999'  ,  '142'],
+            ['4,000 - 5,999'  ,  '116'],
+            ['6,000 - 7,999'  ,  '197'],
+            ['8,000 - 9,999'  ,  '362'],
+            ['10,000 - 14,999',  '812'],
+            ['15,000 - 19,999',  '611'],
+            ['20,000 - 24,999',  '416'],
+            ['25,000 - 29,999',  '241'],
+            ['30,000 - 39,999',  '278'],
+            ['40,000 - 59,999',  '451'],
+            ['≧ 60,000'       ,  '804']
+          ]
 
-          var data = [4, 8, 15, 16, 23, 42];
+          var margin = {top: 20, right: 20, bottom: 30, left: 40};
+          var actualWidth = document.querySelector('.chart').offsetWidth;
+          var actualHeight = document.querySelector('.chart').offsetHeight;
+          var width = actualWidth - margin.left - margin.right;
+          var height = actualHeight - margin.top - margin.bottom;
 
-          var barWidth = 20;
-          var width = data.length * barWidth;
-          var height = 400;
+          var x = d3.scale.ordinal()
+            .rangeRoundBands([0, width], .1);
 
-          var x = d3.scale.linear()
-            .domain([0, d3.max(data)])
+          var y = d3.scale.linear()
             .range([height, 0]);
 
-          var chart = d3.select(".chart")
-            .attr("width", width)
-            .attr("height", height);
+          var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
 
-          var bar = chart.selectAll("g")
+          var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left")
+            .ticks(10, "%");
+
+          var svg = d3.select(".chart");
+          svg.append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+          x.domain(data.map(function(d) { return d[0]; }));
+          y.domain([0, d3.max(data, function(d) { return +d[1]; })]);
+
+          svg.append("g")
+            .attr("class", "x axis")
+            .attr("transform", "translate(0," + height + ")")
+            .call(xAxis);
+
+          svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+            .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("Monthly Income");
+
+          svg.selectAll(".bar")
             .data(data)
-            .enter().append("g")
-            .attr("transform", function(d, i) {
-              return "translate(" + i * barWidth + ",0)";
-            });
-            //.attr("transform", function(d, i){
-            //  return "rotate(180)";
-            //});
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function(d) { return x(d[0]); })
+            .attr("width", x.rangeBand())
+            .attr("y", function(d) { return y(d[1]); })
+            .attr("height", function(d) { return height - y(d[1]); });
 
-          bar.append("rect")
-            .attr("height", function(d){
-              return height - x(d);
-            })
-            .attr("y", function(d){
-              return x(d);
-            })
-            .attr("width", barWidth - 1);
-
-          bar.append("text")
-            .attr("y", function(d) { return height - (height - x(d)) / 2; })
-            .attr("x", barWidth / 2)
-            .attr("dx", "0.35em")
-            .text(function(d) { return d; });
+          //function type(d) {
+          //  d.frequency = +d.frequency;
+          //  return d;
+          //}
 
         })(d3);
       }};
