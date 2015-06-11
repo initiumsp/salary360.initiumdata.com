@@ -23,80 +23,81 @@ angular.module('salary360initiumdatacomApp')
         'gender': '@',
         'salary': '@'
       },
-      link: function(scope, element, attrs) {
+      //link: function(scope, element, attrs) {
+      link: function(scope) {
 
         var salaryRangeMapping = [
           [
             -1,
-            "< 2000",
-            "a78_<",
-            "78"
+            '< 2000',
+            'a78_<',
+            '78'
           ],
           [
             2000,
-            "2000 - 3999",
-            "a80_2000",
-            "80"
+            '2000 - 3999',
+            'a80_2000',
+            '80'
           ],
           [
             4000,
-            "4000 - 5999",
-            "a82_4000",
-            "82"
+            '4000 - 5999',
+            'a82_4000',
+            '82'
           ],
           [
             6000,
-            "6000 - 7999",
-            "a84_6000",
-            "84"
+            '6000 - 7999',
+            'a84_6000',
+            '84'
           ],
           [
             8000,
-            "8000 - 9999",
-            "a86_8000",
-            "86"
+            '8000 - 9999',
+            'a86_8000',
+            '86'
           ],
           [
             10000,
-            "10000 - 14999",
-            "a88_10000",
-            "88"
+            '10000 - 14999',
+            'a88_10000',
+            '88'
           ],
           [
             15000,
-            "15000 - 19999",
-            "a90_15000",
-            "90"
+            '15000 - 19999',
+            'a90_15000',
+            '90'
           ],
           [
             20000,
-            "20000 - 24999",
-            "a92_20000",
-            "92"
+            '20000 - 24999',
+            'a92_20000',
+            '92'
           ],
           [
             25000,
-            "25000 - 29999",
-            "a94_25000",
-            "94"
+            '25000 - 29999',
+            'a94_25000',
+            '94'
           ],
           [
             30000,
-            "30000 - 39999",
-            "a96_30000",
-            "96"
+            '30000 - 39999',
+            'a96_30000',
+            '96'
           ],
           [
             40000,
-            "40000 - 59999",
-            "a98_40000",
-            "98"
+            '40000 - 59999',
+            'a98_40000',
+            '98'
           ],
           [
             60000,
-            ">= 60000",
-            "a100_>=",
-            "100"
+            '>= 60000',
+            'a100_>=',
+            '100'
           ]
         ];
 
@@ -120,7 +121,7 @@ angular.module('salary360initiumdatacomApp')
             cummulative: cummulative,
             total: total,
             ratio: cummulative / total
-          }
+          };
         };
 
         var render = function(d3) {
@@ -133,7 +134,7 @@ angular.module('salary360initiumdatacomApp')
           var height = actualHeight - margin.top - margin.bottom;
 
           var x = d3.scale.ordinal()
-            .rangeRoundBands([0, width], .1);
+            .rangeRoundBands([0, width], 0.1);
 
           var y = d3.scale.linear()
             .range([height, 0]);
@@ -155,16 +156,16 @@ angular.module('salary360initiumdatacomApp')
           svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-          var api_url = 'http://salary360.initiumdata.com/api/census2011/areas/'
-            + scope.area + '/' + scope.gender + '/data.csv';
+          var apiUrl = 'http://salary360.initiumdata.com/api/census2011/areas/' +
+            scope.area + '/' + scope.gender + '/data.csv';
 
-          d3.csv(api_url,
+          d3.csv(apiUrl,
             function(d){
               //window.d = d;
               //console.log('data:');
               //console.log(d);
               var data = d.map(function(x){
-                return [x.row, x.value]
+                return [x.row, x.value];
               });
 
               var ranking = calculateRanking(d, scope.salary, salaryRangeMapping);
@@ -174,7 +175,7 @@ angular.module('salary360initiumdatacomApp')
               var message = d3.select('.message');
               message.selectAll('div').remove();
               message.append('div')
-                .text('You beat ' + Math.floor(ranking['ratio'] * 100) + '% of the ' + scope.gender + ' in your area')
+                .text('You beat ' + Math.floor(ranking.ratio * 100) + '% of the ' + scope.gender + ' in your area')
                 .attr('class', 'message');
 
               //ranking['ratio']
@@ -205,16 +206,16 @@ angular.module('salary360initiumdatacomApp')
                 .attr("width", x.rangeBand())
                 .attr("y", function(d) { return y(d[1]); })
                 .attr("height", function(d) { return height - y(d[1]); });
-              window.u = updates;
-              d3.selectAll(".bar").filter(function(d, i){
+              //window.u = updates;
+              d3.selectAll(".bar").filter(function(d){
                 //console.log("once");
                 //console.log(d);
                 //console.log(ranking);
-                return d[0] === ranking['binName'];
+                return d[0] === ranking.binName;
               }).attr("class", "bar highlight");
 
-              var tagX = x(data[ranking['binID']][0]);
-              var tagY = y(data[ranking['binID']][1]);
+              var tagX = x(data[ranking.binID][0]);
+              var tagY = y(data[ranking.binID][1]);
               console.log(tagX);
               console.log(tagY);
               svg.append("text")

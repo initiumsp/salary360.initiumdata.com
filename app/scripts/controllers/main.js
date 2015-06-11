@@ -28,7 +28,7 @@ angular.module('salary360initiumdatacomApp')
 
     $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-areas.json')
       .success(function(d){
-        $scope.options.area = _.map(d, function(value, key){return key})
+        $scope.options.area = _.map(d, function(value, key){return key;});
       });
 
   }]);

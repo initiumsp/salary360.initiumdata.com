@@ -484,7 +484,7 @@ module.exports = function (grunt) {
   // This is for quick testing of Grunt tasks
   grunt.registerTask('mytask', [
     'copy:dist'
-  ])
+  ]);
 
   grunt.registerTask('default', [
     'newer:jshint',

@@ -14,4 +14,5 @@ angular.module('salary360initiumdatacomApp')
       'AngularJS',
       'Karma'
     ];
+
   });
