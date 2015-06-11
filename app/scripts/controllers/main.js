@@ -54,10 +54,15 @@ angular.module('salary360initiumdatacomApp')
 
     $scope.getDistrictByRegion = function(){
       $scope.options.district = _.map($scope.geoTree[$scope.input.region], function(value, key){return key;});
+      // Set default
+      $scope.input.district = $scope.options.district[0];
+      $scope.getAreaByDistrict();
     };
 
     $scope.getAreaByDistrict = function(){
       $scope.options.area = $scope.geoTree[$scope.input.region][$scope.input.district];
+      // Set default
+      $scope.input.area = $scope.options.area[0];
     };
 
     $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-areas.json')
