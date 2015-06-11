@@ -151,6 +151,7 @@ angular.module('salary360initiumdatacomApp')
           var svg = d3.select(".chart");
           //svg.selectAll("g").remove();
           svg.selectAll("rect").remove();
+          svg.selectAll("text").remove();
           svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
@@ -170,7 +171,7 @@ angular.module('salary360initiumdatacomApp')
               console.log(ranking);
 
               x.domain(data.map(function(d) { return d[0]; }));
-              y.domain([0, d3.max(data, function(d) { return +d[1]; })]);
+              y.domain([0, 1.2 * d3.max(data, function(d) { return +d[1]; })]);
 
               svg.append("g")
                 .attr("class", "x axis")
@@ -197,11 +198,22 @@ angular.module('salary360initiumdatacomApp')
                 .attr("height", function(d) { return height - y(d[1]); });
               window.u = updates;
               d3.selectAll(".bar").filter(function(d, i){
-                console.log("once");
-                console.log(d);
-                console.log(ranking);
+                //console.log("once");
+                //console.log(d);
+                //console.log(ranking);
                 return d[0] === ranking['binName'];
               }).attr("class", "bar highlight");
+
+              var tagX = x(data[ranking['binID']][0]);
+              var tagY = y(data[ranking['binID']][1]);
+              console.log(tagX);
+              console.log(tagY);
+              svg.append("text")
+                .attr("x", tagX)
+                .attr("y", tagY)
+                .attr("dy", "-1em")
+                .text("You are here")
+                .attr("class", "text highlight");
             });
 
           //function type(d) {
