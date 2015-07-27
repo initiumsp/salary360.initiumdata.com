@@ -3,7 +3,8 @@
 # === System update ==== 
 
 sudo apt-get update -y
-sudo apt-get install git
+sudo apt-get install -y git
+#sudo apt-get install -y build-essential
 
 # === Install NodeJS ===
 
@@ -23,10 +24,11 @@ cd /vagrant/
 sudo npm install -g bower
 sudo npm install -g grunt-cli
 npm install
-bower install
+bower install --config.interactive=false
 
 # === Install ruby dependencies ===
 
-sudo apt-get purge ruby-compass
+sudo apt-get install -y ruby-dev
+sudo apt-get purge -y ruby-compass
 sudo gem update
 sudo gem install compass
