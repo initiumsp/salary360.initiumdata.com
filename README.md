@@ -12,9 +12,10 @@ Install the virtualisation suite:
 * VirtualBox
 * Vagrant
 
-Launch the image:
+Download image and launch virtual machine:
 
 ```
+vagrant box add ubuntu/trusty64
 vagrant up
 ```
 
