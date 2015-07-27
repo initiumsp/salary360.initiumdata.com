@@ -32,17 +32,19 @@ angular.module('salary360initiumdatacomApp')
 
     // TODO: can migrate to i18n
 
-    $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-areas.json')
+    var apiPrefix = '/api';
+
+    $http.get(apiPrefix + '/census2011/geo/translation-areas.json')
       .success(function(d){
         $scope.translationAreas = d;
       });
 
-    $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-districts.json')
+    $http.get(apiPrefix + '/census2011/geo/translation-districts.json')
       .success(function(d){
         $scope.translationDistricts = d;
       });
 
-    $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-regions.json')
+    $http.get(apiPrefix + '/census2011/geo/translation-regions.json')
       .success(function(d){
         $scope.translationRegions = d;
       });
@@ -53,7 +55,7 @@ angular.module('salary360initiumdatacomApp')
       both: {T: '所有人'},
     }
 
-    $http.get('http://salary360.initiumdata.com/api/census2011/geo/geo-tree.json')
+    $http.get(apiPrefix + '/census2011/geo/geo-tree.json')
       .success(function(d){
         $scope.geoTree = d;
       });
@@ -72,7 +74,7 @@ angular.module('salary360initiumdatacomApp')
       $scope.input.area = $scope.options.area[0];
     };
 
-    $http.get('http://salary360.initiumdata.com/api/census2011/geo/translation-areas.json')
+    $http.get(apiPrefix + '/census2011/geo/translation-areas.json')
       .success(function(d){
         $scope.options.area = _.map(d, function(value, key){return key;});
       });
