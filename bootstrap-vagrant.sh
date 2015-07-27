@@ -23,8 +23,12 @@ cd -
 cd /vagrant/
 sudo npm install -g bower
 sudo npm install -g grunt-cli
+
+rm -rf node_modules
+npm cache clean
 npm install
-bower install --config.interactive=false
+
+bower install
 
 # === Install ruby dependencies ===
 
@@ -32,3 +36,4 @@ sudo apt-get install -y ruby-dev
 sudo apt-get purge -y ruby-compass
 sudo gem update
 sudo gem install compass
+
