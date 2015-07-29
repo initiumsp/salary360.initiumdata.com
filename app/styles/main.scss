@@ -29,11 +29,33 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 }
 
+.message1 {
+  display: inline;
+  padding: 5px 0 5px 0;
+  margin: 5px 0 20px 0;
+  color: #014441;
+}
+
 .message {
-  padding: 0.5em;
-  margin: 0.5em;
-  color: red;
-  //background: cornflowerblue;
+  font-size: 40px;
+  display: inline;
+  padding: 5px 0 5px 0;
+  margin: 5px 0 20px 0;
+  color: #eb0f6b;
+}
+
+.message2 {
+  display: inline;
+  padding: 5px 0 5px 0;
+  margin: 5px 0 20px 0;
+  color: #014441;
+}
+
+.answer {
+  padding-left: 0px;
+  margin-top: -20px;
+  height: 100px;
+  font-size: 14px;
 }
 
 .axis {
@@ -85,6 +107,29 @@ select {
   line-height: 200px;
   font-size: 20px;
 }
+
+input {
+  width: 240px;
+}
+
+.icon  {
+  width: 130px;
+  float: right;
+  margin-right: 0px;
+  margin-top: -15px;
+  margin-bottom: -35px;
+}
+
+.icon img {
+  width:110px;
+}
+
+.text.highlight {
+    color: #eb0f6b;
+}
+
+
+
 
 
 

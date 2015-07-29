@@ -175,19 +175,32 @@ angular.module('salary360initiumdatacomApp')
 
               var message = d3.select('.message');
               message.selectAll('div').remove();
+
+              var message2 = d3.select('.message2');
+              message2.selectAll('div').remove();
+
               var genderToName = {
                 'male': '男性',
                 'female': '女性',
                 'both': '人',
               };
+              
+
               message.append('div')
-                .text('您的月收入擊敗了該區' + Math.floor(ranking.ratio * 100) + '% 的' + genderToName[scope.gender])
+             //   .text('您的月收入擊敗了該區' + Math.floor(ranking.ratio * 100) + '% 的' + genderToName[scope.gender])
+                .text(Math.floor(ranking.ratio * 100) + '%')
                 .attr('class', 'message');
+
+              message2.append('div')
+                .text('的' + genderToName[scope.gender])
+                .attr('class', 'message2');
+
 
               //ranking['ratio']
 
               x.domain(data.map(function(d) { return d[0]; }));
               y.domain([0, 1.2 * d3.max(data, function(d) { return +d[1]; })]);
+
 
               //svg.append("g")
               //  .attr("class", "x axis")
@@ -228,7 +241,7 @@ angular.module('salary360initiumdatacomApp')
                 .attr("x", tagX)
                 .attr("y", tagY)
                 .attr("dy", "-1em")
-                .text("You are here")
+                .text("You")
                 .attr("class", "text highlight");
             });
 
