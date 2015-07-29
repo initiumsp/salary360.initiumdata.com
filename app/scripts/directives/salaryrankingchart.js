@@ -156,7 +156,7 @@ angular.module('salary360initiumdatacomApp')
           svg.append("g")
             .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-          var apiPrefix = '/api';
+          var apiPrefix = 'api';
           var apiUrl = apiPrefix + '/census2011/areas/' +
             scope.area + '/' + scope.gender + '/data.csv';
 

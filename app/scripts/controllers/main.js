@@ -32,7 +32,7 @@ angular.module('salary360initiumdatacomApp')
 
     // TODO: can migrate to i18n
 
-    var apiPrefix = '/api';
+    var apiPrefix = 'api';
 
     $http.get(apiPrefix + '/census2011/geo/translation-areas.json')
       .success(function(d){
