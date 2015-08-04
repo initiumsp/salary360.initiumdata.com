@@ -37,7 +37,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 }
 
 .message {
-  font-size: 40px;
+  font-size: 30px;
   display: inline;
   padding: 5px 0 5px 0;
   margin: 5px 0 20px 0;
@@ -56,6 +56,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   margin-top: -20px;
   height: 100px;
   font-size: 14px;
+  font-family: MHeiHK-Bold;
+  color: #014441;
 }
 
 .axis {
@@ -114,7 +116,7 @@ input {
   width: 130px;
   float: right;
   margin-right: 0px;
-  margin-top: -15px;
+  margin-top: -40px;
   margin-bottom: -35px;
 }
 
@@ -136,6 +138,28 @@ input {
 
 .chart {
   max-width: 500px;
+}
+
+.share {
+  display: inline-block;
+  background-color: #014441;
+  width: 150px;
+  height: 40px;
+  color: white;
+  padding: 8px;
+  border-radius: 3px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.share :hover {
+  background-color: black;
+}
+
+.share img {
+  width: 24px;
+  height: 24px;
+  float: right;
 }
 
 

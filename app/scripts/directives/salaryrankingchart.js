@@ -14,6 +14,7 @@
 // We don't use d3Service provided in that article.
 // Instead we invoke d3 from the window domain.
 
+
 angular.module('salary360initiumdatacomApp')
   .directive('salaryRankingChart', [function() {
     return {
@@ -133,6 +134,7 @@ angular.module('salary360initiumdatacomApp')
           var width = actualWidth - margin.left - margin.right;
           var height = actualHeight - margin.top - margin.bottom;
 
+
           var x = d3.scale.ordinal()
             .rangeRoundBands([0, width], 0.1);
 
@@ -191,6 +193,9 @@ angular.module('salary360initiumdatacomApp')
 
 
 
+
+
+
               
 
               message.append('div')
@@ -205,12 +210,42 @@ angular.module('salary360initiumdatacomApp')
 
 
 
-              if ( ranking.ratio < 0.5 ) {
-                icon.append( 'div' )
-                .html('<img src="images/test.png">')
-                .attr('class', 'icon');
+             if ( ranking.ratio <= 0.25 ) {
+                 var number = 1;
               }
 
+             if ( (0.25< ranking.ratio) && (ranking.ratio <= 0.35) ) {
+                 var number = 2;
+              }
+
+             if ( (0.35< ranking.ratio) && (ranking.ratio <= 0.45) ) {
+                 var number = 3;
+              }
+
+              if ( (0.45< ranking.ratio) && (ranking.ratio <= 0.55) ) {
+                 var number = 4;
+              }
+
+              if ( (0.55< ranking.ratio) && (ranking.ratio <= 0.65) ) {
+                 var number = 5;
+              }
+
+              if ( (0.65< ranking.ratio) && (ranking.ratio <= 0.75) ) {
+                 var number = 6;
+              }
+
+              if ( (0.75< ranking.ratio) && (ranking.ratio <= 0.85) ) {
+                 var number = 7;
+              }
+
+             if ( ranking.ratio > 0.85 ) {
+                 var number = 8;
+              }
+
+
+              icon.append( 'div' )
+                .html('<img src="images/icon' + number + '.png">')
+                .attr('class', 'icon');
 
 
               //ranking['ratio']
