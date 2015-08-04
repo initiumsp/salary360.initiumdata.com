@@ -179,11 +179,18 @@ angular.module('salary360initiumdatacomApp')
               var message2 = d3.select('.message2');
               message2.selectAll('div').remove();
 
+              var icon = d3.select('.icon');
+              icon.selectAll('div').remove();
+
               var genderToName = {
                 'male': '男性',
                 'female': '女性',
                 'both': '人',
               };
+
+
+
+
               
 
               message.append('div')
@@ -194,6 +201,16 @@ angular.module('salary360initiumdatacomApp')
               message2.append('div')
                 .text('的' + genderToName[scope.gender])
                 .attr('class', 'message2');
+
+
+
+
+              if ( ranking.ratio < 0.5 ) {
+                icon.append( 'div' )
+                .html('<img src="images/test.png">')
+                .attr('class', 'icon');
+              }
+
 
 
               //ranking['ratio']
