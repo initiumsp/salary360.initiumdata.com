@@ -181,8 +181,11 @@ angular.module('salary360initiumdatacomApp')
               var message2 = d3.select('.message2');
               message2.selectAll('div').remove();
 
-              var icon = d3.select('.icon');
-              icon.selectAll('div').remove();
+              var descriptionDiv = d3.select('.description');
+              descriptionDiv.selectAll('div').remove();
+
+              var iconDiv = d3.select('.icon');
+              iconDiv.selectAll('div').remove();
 
               var genderToName = {
                 'male': '男性',
@@ -220,9 +223,25 @@ angular.module('salary360initiumdatacomApp')
 
               var number = ratioToNumber(ranking.ratio);
 
-              icon.append( 'div' )
+              var messages = [
+                'Nothing here!', // Number 0 does not exist. Start from 1.
+                '維多利亞公園的長椅任君挑選！1',
+                '維多利亞公園的長椅任君挑選！2',
+                '維多利亞公園的長椅任君挑選！3',
+                '維多利亞公園的長椅任君挑選！4',
+                '維多利亞公園的長椅任君挑選！5',
+                '維多利亞公園的長椅任君挑選！6',
+                '維多利亞公園的長椅任君挑選！7',
+                '維多利亞公園的長椅任君挑選！8',
+                //TODO: @Qiufeng
+              ];
+
+              iconDiv.append('div')
                 .html('<img src="images/icon' + number + '.png">')
                 .attr('class', 'icon');
+              descriptionDiv.append('div')
+                .text(messages[number]);
+                //.attr('class', 'message');
 
 
               //ranking['ratio']
