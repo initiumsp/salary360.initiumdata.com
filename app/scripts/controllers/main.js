@@ -8,7 +8,7 @@
  * Controller of the salary360initiumdatacomApp
  */
 angular.module('salary360initiumdatacomApp')
-  .controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+  .controller('MainCtrl', ['$scope', '$http', '$timeout', function ($scope, $http, $timeout) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -58,6 +58,7 @@ angular.module('salary360initiumdatacomApp')
     $http.get(apiPrefix + '/census2011/geo/geo-tree.json')
       .success(function(d){
         $scope.geoTree = d;
+        $scope.getDistrictByRegion();
       });
 
 
@@ -74,9 +75,15 @@ angular.module('salary360initiumdatacomApp')
       $scope.input.area = $scope.options.area[0];
     };
 
-    $http.get(apiPrefix + '/census2011/geo/translation-areas.json')
-      .success(function(d){
-        $scope.options.area = _.map(d, function(value, key){return key;});
-      });
+    //$http.get(apiPrefix + '/census2011/geo/translation-areas.json')
+    //  .success(function(d){
+    //    $scope.options.area = _.map(d, function(value, key){return key;});
+    //  });
+
+    //$('#salary-ranking-chart').hide();
+    //$timeout(function(){
+    //  console.log('timeout');
+    //  $('#salary-ranking-chart').show();
+    //}, 200);
 
   }]);

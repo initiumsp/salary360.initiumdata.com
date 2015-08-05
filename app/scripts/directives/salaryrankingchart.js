@@ -20,9 +20,10 @@ angular.module('salary360initiumdatacomApp')
     return {
       restrict: 'EA',
       scope: {
-        'area': '@',
-        'gender': '@',
-        'salary': '@'
+        //'area': '@',
+        //'gender': '@',
+        //'salary': '@'
+        'input': '@'
       },
       //link: function(scope, element, attrs) {
       link: function(scope) {
@@ -125,7 +126,26 @@ angular.module('salary360initiumdatacomApp')
           };
         };
 
+        //var mutex = false;
+
         var render = function(d3) {
+
+          console.log(scope.input);
+          var input = JSON.parse(scope.input);
+          scope.area = input.area;
+          scope.gender = input.gender;
+          scope.salary = input.salary;
+
+          // Return all 'true' in console.
+          // --> Event based, every event is handled when others are finished.
+          //console.log(mutex);
+          //if (!mutex) {
+          //  // No one is holding the mutex
+          //  mutex = true;
+          //} else {
+          //  return ;
+          //}
+
           //console.log(scope);
 
           var margin = {top: 20, right: 20, bottom: 30, left: 40};
@@ -309,6 +329,9 @@ angular.module('salary360initiumdatacomApp')
                 .text("You")
                 .attr("class", "text highlight");
             });
+
+          //// Release the mutex
+          //mutex = false;
 
           //function type(d) {
           //  d.frequency = +d.frequency;

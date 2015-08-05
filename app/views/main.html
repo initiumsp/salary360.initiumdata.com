@@ -19,53 +19,55 @@
       </div>
       <div class="form-group">
         <label for="salary">薪金</label>
-        <input type="text" ng-model="input.salary" type="number"/>
+        <input id="salary" type="text" ng-model="input.salary" type="number"/>
       </div>
     </form>
-    <div salary-ranking-chart
-         area="{{input.area}}"
-         gender="{{input.gender}}"
-         salary="{{input.salary}}">
 
-      <div class="figure-title">
-        該區月收入分佈
-      </div>
-      <svg class="chart" width="100%" height="300px" padding="0px"></svg>
-      <div class="answer">
-        <div class="message">
-          <div class="message-front">您的月收入擊敗了該區</div>
-          <div class="message-number"></div>
-          <div class="message-back"></div>
+    <div id="salary-ranking-chart">
+      <div salary-ranking-chart
+          input="{{input}}">
+        <!--area="{{input.area}}"-->
+        <!--gender="{{input.gender}}"-->
+        <!--salary="{{input.salary}}">-->
+        <div class="figure-title">
+          該區月收入分佈
         </div>
-        <div class="message3"></div>
-        <div class="description"></div>
-        <div class="icon">
-          <img class='icon-1' src="images/icon1.png">
-          <img class='icon-2' src="images/icon2.png">
-          <img class='icon-3' src="images/icon3.png">
-          <img class='icon-4' src="images/icon4.png">
-          <img class='icon-5' src="images/icon5.png">
-          <img class='icon-6' src="images/icon6.png">
-          <img class='icon-7' src="images/icon7.png">
-          <img class='icon-8' src="images/icon8.png">
+        <svg class="chart" width="100%" height="300px" padding="0px"></svg>
+        <div class="answer">
+          <div class="message">
+            <div class="message-front">您的月收入擊敗了該區</div>
+            <div class="message-number"></div>
+            <div class="message-back"></div>
+          </div>
+          <div class="message3"></div>
+          <div class="description"></div>
+          <div class="icon">
+            <img class='icon-1' src="images/icon1.png">
+            <img class='icon-2' src="images/icon2.png">
+            <img class='icon-3' src="images/icon3.png">
+            <img class='icon-4' src="images/icon4.png">
+            <img class='icon-5' src="images/icon5.png">
+            <img class='icon-6' src="images/icon6.png">
+            <img class='icon-7' src="images/icon7.png">
+            <img class='icon-8' src="images/icon8.png">
+          </div>
+        </div>
+        <div class="social">
+          <div class="weibo">
+            <a title="分享到微博" href="http://v.t.sina.com.cn/share/share.php?title=我的收入擊敗了％的香港XX人，快來試試你的你的吧&amp;url=http://salary360.initiumdata.com/salary360/#/" hidefocus="true">
+              <div class="share">分享到微博
+                <img src="images/weibo_48x48.png">
+              </div>
+            </a>
+          </div>
+          <div class="facebook">
+            <a href="">
+              <div class="share">分享到facebook
+                <img src="images/FB-f-Logo__blue_50.png">
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="social">
-      <div class="weibo">
-        <a title="分享到微博" href="http://v.t.sina.com.cn/share/share.php?title=我的收入擊敗了％的香港XX人，快來試試你的你的吧&amp;url=http://salary360.initiumdata.com/salary360/#/" hidefocus="true">
-          <div class="share">分享到微博
-            <img src="images/weibo_48x48.png">
-          </div>
-        </a>
-      </div>
-      <div class="facebook">
-        <a href="">
-          <div class="share">分享到facebook
-            <img src="images/FB-f-Logo__blue_50.png">
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
 </div>
