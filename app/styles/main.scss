@@ -29,14 +29,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 }
 
-.message1 {
+.message-front {
   display: inline;
   padding: 5px 0 5px 0;
   margin: 5px 0 20px 0;
   color: #014441;
 }
 
-.message {
+.message-number {
   font-size: 30px;
   display: inline;
   padding: 5px 0 5px 0;
@@ -44,7 +44,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   color: #eb0f6b;
 }
 
-.message2 {
+.message-back {
   display: inline;
   padding: 5px 0 5px 0;
   margin: 5px 0 20px 0;

@@ -175,11 +175,11 @@ angular.module('salary360initiumdatacomApp')
               //console.log(ranking);
               //document.querySelector('.message').appendChild()
 
-              var message = d3.select('.message');
-              message.selectAll('div').remove();
+              var divMessageNumber = d3.select('.message-number');
+              divMessageNumber.selectAll('div').remove();
 
-              var message2 = d3.select('.message2');
-              message2.selectAll('div').remove();
+              var divMessageBack = d3.select('.message-back');
+              divMessageBack.selectAll('div').remove();
 
               var descriptionDiv = d3.select('.description');
               descriptionDiv.selectAll('div').remove();
@@ -194,15 +194,14 @@ angular.module('salary360initiumdatacomApp')
               };
 
 
-
-              message.append('div')
+              divMessageNumber.append('div')
              //   .text('您的月收入擊敗了該區' + Math.floor(ranking.ratio * 100) + '% 的' + genderToName[scope.gender])
                 .text(Math.floor(ranking.ratio * 100) + '%')
-                .attr('class', 'message');
+                .attr('class', 'message-number');
 
-              message2.append('div')
+              divMessageBack.append('div')
                 .text('的' + genderToName[scope.gender])
-                .attr('class', 'message2');
+                .attr('class', 'message-back');
 
 
 
