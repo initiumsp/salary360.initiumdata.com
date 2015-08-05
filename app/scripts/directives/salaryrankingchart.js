@@ -193,10 +193,11 @@ angular.module('salary360initiumdatacomApp')
                 'both': '人',
               };
 
+              var percentage = Math.floor(ranking.ratio * 100) + '%';
 
               divMessageNumber.append('div')
              //   .text('您的月收入擊敗了該區' + Math.floor(ranking.ratio * 100) + '% 的' + genderToName[scope.gender])
-                .text(Math.floor(ranking.ratio * 100) + '%')
+                .text(percentage)
                 .attr('class', 'message-number');
 
               divMessageBack.append('div')
@@ -242,6 +243,17 @@ angular.module('salary360initiumdatacomApp')
                 .text(messages[number]);
                 //.attr('class', 'message');
 
+
+              //Social Functions
+
+              //TODO: ONLINE
+              //      Change to the deployment server address
+              var shareURLSina = 'http://v.t.sina.com.cn/share/share.php?title=我的收入擊敗了'
+                + percentage
+                +'％的香港'
+                + genderToName[scope.gender]
+                +'，快來試試你的吧&amp;url=http://192.168.1.6/salary360/';
+              d3.select('.social .weibo a').attr('href', shareURLSina);
 
               //ranking['ratio']
 
