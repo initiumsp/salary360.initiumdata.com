@@ -129,8 +129,13 @@ angular.module('salary360initiumdatacomApp')
           //console.log(scope);
 
           var margin = {top: 20, right: 20, bottom: 30, left: 40};
-          var actualWidth = document.querySelector('.chart').offsetWidth;
-          var actualHeight = document.querySelector('.chart').offsetHeight;
+          // Firefox has problem with .offsetWidth sometimes.. Use jquery one instead
+          // Ref:
+          //     http://stackoverflow.com/questions/15931374/firefox-offsetwidth-not-reporting-anything
+          //var actualWidth = document.querySelector('.chart').offsetWidth;
+          var actualWidth = $('.chart').width();
+          //var actualHeight = document.querySelector('.chart').offsetHeight;
+          var actualHeight = $('.chart').height();
           var width = actualWidth - margin.left - margin.right;
           var height = actualHeight - margin.top - margin.bottom;
 
