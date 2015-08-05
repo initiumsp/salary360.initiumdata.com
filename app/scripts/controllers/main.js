@@ -58,6 +58,7 @@ angular.module('salary360initiumdatacomApp')
     $http.get(apiPrefix + '/census2011/geo/geo-tree.json')
       .success(function(d){
         $scope.geoTree = d;
+        $scope.getDistrictByRegion();
       });
 
 
@@ -73,10 +74,5 @@ angular.module('salary360initiumdatacomApp')
       // Set default
       $scope.input.area = $scope.options.area[0];
     };
-
-    $http.get(apiPrefix + '/census2011/geo/translation-areas.json')
-      .success(function(d){
-        $scope.options.area = _.map(d, function(value, key){return key;});
-      });
 
   }]);
