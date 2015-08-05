@@ -113,11 +113,19 @@ input {
 }
 
 .icon  {
+  position: relative;
   width: 130px;
   float: right;
   margin-right: 0px;
   margin-top: -40px;
   margin-bottom: -35px;
+  img {
+    //NOTE: Keep this
+    //      Please adjust icon position via the outside "div.icon" element
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 }
 
 .icon img {

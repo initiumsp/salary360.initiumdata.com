@@ -52,8 +52,8 @@ angular.module('salary360initiumdatacomApp')
     $scope.translationGenders = {
       male: {T: '男性'},
       female: {T: '女性'},
-      both: {T: '所有人'},
-    }
+      both: {T: '所有人'}
+    };
 
     $http.get(apiPrefix + '/census2011/geo/geo-tree.json')
       .success(function(d){

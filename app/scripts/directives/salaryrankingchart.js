@@ -236,12 +236,14 @@ angular.module('salary360initiumdatacomApp')
                 //TODO: @Qiufeng
               ];
 
-              iconDiv.append('div')
-                .html('<img src="images/icon' + number + '.png">')
-                .attr('class', 'icon');
               descriptionDiv.append('div')
                 .text(messages[number]);
-                //.attr('class', 'message');
+
+              iconDiv.selectAll('img').style('visibility', 'hidden');
+              iconDiv.select('.icon-' + number).style('visibility', 'visible');
+                //.append('div')
+                //.html('<img src="images/icon' + number + '.png">')
+                //.attr('class', 'icon');
 
 
               //Social Functions
