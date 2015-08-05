@@ -261,7 +261,7 @@ angular.module('salary360initiumdatacomApp')
                 + '，快來試試你的吧&amp;url=http://192.168.1.6/salary360/';
               d3.select('.social .weibo a').attr('href', shareURLSina);
 
-              var description = encodeURIComponent(percentage + '的香港' + genderToName[scope.gender] + '，快來試試你的吧');
+              var description = encodeURIComponent('我的收入擊敗了' + percentage + '的香港' + genderToName[scope.gender] + '，快來試試你的吧');
               var url = encodeURIComponent('http://bc3f09dc.ngrok.io');
               var title = document.getElementsByTagName('h1')[0].innerText;
 
