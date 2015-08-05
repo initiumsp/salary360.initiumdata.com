@@ -256,10 +256,24 @@ angular.module('salary360initiumdatacomApp')
               //      Change to the deployment server address
               var shareURLSina = 'http://v.t.sina.com.cn/share/share.php?title=我的收入擊敗了'
                 + percentage
-                +'％的香港'
+                +'的香港'
                 + genderToName[scope.gender]
                 +'，快來試試你的吧&amp;url=http://192.168.1.6/salary360/';
               d3.select('.social .weibo a').attr('href', shareURLSina);
+
+
+              var shareURLFacebook = 'https://www.facebook.com/dialog/feed?app_id=857807794303080' 
+              +'&link=' 
+              +encodeURIComponent('http://localhost:9000/' )
+              +'&name=' + encodeURIComponent(document.getElementsByTagName('h1')[0].innerText)
+              +'&description='
+              + encodeURIComponent(percentage)
+              + encodeURIComponent('的香港')
+              + encodeURIComponent(genderToName[scope.gender])
+              + encodeURIComponent('，快來試試你的吧')
+              +'&redirect_uri='
+              + encodeURIComponent('http://localhost:9000/');
+              d3.select('.social .facebook a').attr('href', shareURLFacebook);
 
               //ranking['ratio']
 
