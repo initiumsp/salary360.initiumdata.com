@@ -151,19 +151,19 @@ angular.module('salary360initiumdatacomApp')
             .orient("left")
             .ticks(10, "%");
 
+          var svg = d3.select(".chart");
+          svg.selectAll("g").remove();
+          svg.selectAll("rect").remove();
+          svg.selectAll("text").remove();
+          svg.append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
           var apiPrefix = 'api';
           var apiUrl = apiPrefix + '/census2011/areas/' +
             scope.area + '/' + scope.gender + '/data.csv';
 
           d3.csv(apiUrl,
             function(d){
-              var svg = d3.select(".chart");
-              svg.selectAll("g").remove();
-              svg.selectAll("rect").remove();
-              svg.selectAll("text").remove();
-              svg.append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
               //window.d = d;
               //console.log('data:');
               //console.log(d);
