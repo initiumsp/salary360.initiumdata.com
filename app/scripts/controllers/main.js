@@ -75,4 +75,6 @@ angular.module('salary360initiumdatacomApp')
       $scope.input.area = $scope.options.area[0];
     };
 
+    $('input[type="range"]').val(10).change();
+
   }]);

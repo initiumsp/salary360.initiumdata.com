@@ -20,6 +20,7 @@
       <div class="form-group">
         <label for="salary">薪金</label>
         <input type="text" ng-model="input.salary" type="number"/>
+        <input type="range" ng-model="input.salary" min="0" max="70000" step="1000"/>
       </div>
     </form>
     <div salary-ranking-chart
