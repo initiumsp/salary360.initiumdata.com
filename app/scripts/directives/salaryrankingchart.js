@@ -192,12 +192,6 @@ angular.module('salary360initiumdatacomApp')
 
 
 
-
-
-
-
-              
-
               message.append('div')
              //   .text('您的月收入擊敗了該區' + Math.floor(ranking.ratio * 100) + '% 的' + genderToName[scope.gender])
                 .text(Math.floor(ranking.ratio * 100) + '%')
@@ -209,39 +203,22 @@ angular.module('salary360initiumdatacomApp')
 
 
 
+              var ratioToNumber = function(ratio){
+                // Defensive assignment
+                var number = 0;
+                if ( ratio <= 0.25 ) {
+                  number = 1;
+                }
+                if ( (0.25 < ratio) && (ratio <= 0.85) ) {
+                  number = Math.floor((ratio - 0.15) / 0.1) + 1;
+                }
+                if ( ratio > 0.85 ) {
+                  number = 8;
+                }
+                return number
+              };
 
-             if ( ranking.ratio <= 0.25 ) {
-                 var number = 1;
-              }
-
-             if ( (0.25< ranking.ratio) && (ranking.ratio <= 0.35) ) {
-                 var number = 2;
-              }
-
-             if ( (0.35< ranking.ratio) && (ranking.ratio <= 0.45) ) {
-                 var number = 3;
-              }
-
-              if ( (0.45< ranking.ratio) && (ranking.ratio <= 0.55) ) {
-                 var number = 4;
-              }
-
-              if ( (0.55< ranking.ratio) && (ranking.ratio <= 0.65) ) {
-                 var number = 5;
-              }
-
-              if ( (0.65< ranking.ratio) && (ranking.ratio <= 0.75) ) {
-                 var number = 6;
-              }
-
-              if ( (0.75< ranking.ratio) && (ranking.ratio <= 0.85) ) {
-                 var number = 7;
-              }
-
-             if ( ranking.ratio > 0.85 ) {
-                 var number = 8;
-              }
-
+              var number = ratioToNumber(ranking.ratio);
 
               icon.append( 'div' )
                 .html('<img src="images/icon' + number + '.png">')
