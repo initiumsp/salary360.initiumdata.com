@@ -152,7 +152,7 @@ angular.module('salary360initiumdatacomApp')
             .ticks(10, "%");
 
           var svg = d3.select(".chart");
-          //svg.selectAll("g").remove();
+          svg.selectAll("g").remove();
           svg.selectAll("rect").remove();
           svg.selectAll("text").remove();
           svg.append("g")
@@ -233,7 +233,6 @@ angular.module('salary360initiumdatacomApp')
                 '偶爾可以打車上班啦~',
                 '聖誕假北海道、墾丁任你挑',
                 '請來中環迎接人生巔峰',
-                //TODO: @Qiufeng
               ];
 
               descriptionDiv.append('div')
@@ -268,15 +267,20 @@ angular.module('salary360initiumdatacomApp')
               //  .attr("transform", "translate(0," + height + ")")
               //  .call(xAxis);
 
-              svg.append("g")
-                .attr("class", "y axis")
-                .call(yAxis)
-                .append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("y", 6)
-                .attr("dy", ".71em")
-                .style("text-anchor", "end")
-                .text("Monthly Income");
+              ////svg.append("g")
+              //svg
+              //  //.attr("class", "y axis")
+              //  //.call(yAxis)
+              //  .append("text")
+              //  .attr("y", 0)
+              //  .attr("x", 0)
+              //  .attr("dx", "7em")
+              //  .attr("dy", "1em")
+              //  //.attr("transform", "rotate(-15)")
+              //  //.attr("dy", ".71em")
+              //  //.style("text-anchor", "end")
+              //  .text("該區月收入分佈")
+              //  .attr('class', 'figure-title');
 
               var updates = svg.selectAll(".bar").data(data);
               updates.exit().remove();

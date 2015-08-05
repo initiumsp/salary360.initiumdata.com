@@ -29,6 +29,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   }
 }
 
+.figure-title {
+  color: #014441;
+  text-anchor: end;
+  max-width: 7em;
+  border-bottom: solid 1px #014441;
+}
+
+
 .message-front {
   display: inline;
   padding: 5px 0 5px 0;
