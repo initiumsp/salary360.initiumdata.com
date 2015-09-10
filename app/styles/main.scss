@@ -79,12 +79,12 @@ h1 {
 
 
 .answer {
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  font-size: 1em;
-  font-family: MHeiHK-Bold;
-  color: #014441;
+  // The outer block.
+  // You can make some spacing by padding here.
   .answer-inner {
+    font-size: 1em;
+    font-family: MHeiHK-Bold;
+    color: #014441;
     padding-left: 0.2em;
     padding-right: 0.2em;
     padding-bottom: 0.5em;
@@ -206,7 +206,7 @@ input {
 }
 
 .form-group {
-  max-width: 500px;
+  //max-width: 500px;
 }
 
 .chart {
