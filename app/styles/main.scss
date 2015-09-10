@@ -4,14 +4,22 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 
 .footer {
-  margin-top: 2em;
-  padding: 0.5em;
-  border-top: 1px dashed grey;
+  background-color: rgb(141,207,207);
+  padding-bottom: 0.5em;
+  .social {
+    text-align: center;
+    a :hover {
+      background-color: #014441;
+    }
+    margin-bottom: 1em;
+  }
   .info-initiumlab {
     text-align: center;
+    margin-bottom: 1em;
   }
   .info-initiummedia {
     text-align: center;
+    margin-bottom: 1em;
   }
 }
 
@@ -37,6 +45,8 @@ h1 {
   &.highlight {
     fill: #eb0f6b;
   }
+
+  border-radius: 3px;
 }
 
 .text {
@@ -86,7 +96,7 @@ h1 {
     padding-right: 1em;
     padding-bottom: 0.5em;
     background: rgb(141,207,207);
-    border-radius: 3px;
+    border-radius: 4px;
   }
 }
 
@@ -200,18 +210,11 @@ input {
   height: 40px;
   color: white;
   padding: 8px;
-  border-radius: 3px;
+  border-radius: 4px;
   margin-right: 10px;
   margin-top: 10px;
 }
 
-.social {
-  background: rgb(141,207,207);
-  text-align: center;
-  a :hover {
-    background-color: #014441;
-  }
-}
 
 .share img {
   width: 24px;
