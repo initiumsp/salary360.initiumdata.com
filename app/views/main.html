@@ -15,17 +15,22 @@
           </div>
           <div class="form-group">
             <label class="label" for="area">地標</label>
-            <select class="form-control" name="" id="area" ng-model="input.area" ng-options="translationAreas[v].T for v in options.area track by v"></select>
+            <select class="form-control" name="" id="area" ng-model="input.area"
+                    ng-options="translationAreas[v].T for v in options.area track by v"
+                    ng-chage="trackAreaChange()"></select>
           </div>
           <div class="form-group">
             <label class="label" for="gender" >性別</label>
-            <select class="form-control" name="" id="gender" ng-model="input.gender" ng-options="translationGenders[v].T for v in options.gender track by v"></select>
+            <select class="form-control" name="" id="gender" ng-model="input.gender"
+                    ng-options="translationGenders[v].T for v in options.gender track by v"
+                    ng-change="trackGenderChange()"></select>
           </div>
           <div class="form-group">
             <label class="label" for="salary">薪金</label>
-            <input class="form-control" id="salary" type="text" ng-model="input.salary" type="number"/>
+            <input class="form-control" id="salary" type="text"
+                   ng-model="input.salary" type="number" ng-change="trackSalaryChange()"/>
             <div id="salary-slider">
-              <input type="range" ng-model="input.salary" min="0" max="70000" step="1000"/>
+              <input type="range" ng-model="input.salary" min="0" max="70000" step="1000" ng-change="trackSalaryChange()" />
             </div>
           </div>
         </form>
@@ -80,21 +85,21 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <div>
           <div class="weibo">
-            <a href="please see javascript">
+            <a href="" ng-click="shareToWeibo()">
               <div class="share">分享到微博
                 <img src="images/weibo_48x48.png">
               </div>
             </a>
           </div>
           <div class="facebook">
-            <a href="">
+            <a href="" ng-click="shareToFacebook()">
               <div class="share">分享到facebook
                 <img src="images/FB-f-Logo__blue_50.png">
               </div>
             </a>
           </div>
-          <div class="facebook">
-            <a href="">
+          <div class="wechat">
+            <a href="" ng-click="shareToWechat()">
               <div class="share">分享到微信
                 <img src="images/wechat_50x50.png">
               </div>
