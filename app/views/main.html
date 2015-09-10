@@ -1,89 +1,103 @@
-<div class="row">
-  <div class="col-md-12 col-sm-12">
-    <h1>18區人工大比拼 你份糧攞第幾?</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <h1>18區人工大比拼 你份糧攞第幾?</h1>
+        </div>
+      </div>
 
-    <div class="row">
-      <div class="col-md-8 col-sm-8 col-xs-8">
-        <form action="" >
-          <div class="form-group">
-            <label class="label" for="region">地域</label>
-            <select class="form-control" name="" id="region" ng-model="input.region" ng-options="translationRegions[v].T for v in options.region track by v" ng-change="getDistrictByRegion()"></select>
-          </div>
-          <div class="form-group">
-            <label class="label" for="district">地區</label>
-            <select class="form-control" name="" id="district" ng-model="input.district" ng-options="translationDistricts[v].T for v in options.district track by v" ng-change="getAreaByDistrict()"></select>
-          </div>
-          <div class="form-group">
-            <label class="label" for="area">地標</label>
-            <select class="form-control" name="" id="area" ng-model="input.area"
-                    ng-options="translationAreas[v].T for v in options.area track by v"
-                    ng-chage="trackAreaChange()"></select>
-          </div>
-          <div class="form-group">
-            <label class="label" for="gender" >性別</label>
-            <select class="form-control" name="" id="gender" ng-model="input.gender"
-                    ng-options="translationGenders[v].T for v in options.gender track by v"
-                    ng-change="trackGenderChange()"></select>
-          </div>
-          <div class="form-group">
-            <label class="label" for="salary">薪金</label>
-            <input class="form-control" id="salary" type="text"
-                   ng-model="input.salary" type="number" ng-change="trackSalaryChange()"/>
-            <div id="salary-slider">
-              <input type="range" ng-model="input.salary" min="0" max="70000" step="1000" ng-change="trackSalaryChange()" />
+      <div class="row">
+        <div class="col-md-8 col-sm-8 col-xs-8">
+          <form action="" >
+            <div class="form-group">
+              <label class="label" for="region">地域</label>
+              <select class="form-control" name="" id="region" ng-model="input.region" ng-options="translationRegions[v].T for v in options.region track by v" ng-change="getDistrictByRegion()"></select>
             </div>
+            <div class="form-group">
+              <label class="label" for="district">地區</label>
+              <select class="form-control" name="" id="district" ng-model="input.district" ng-options="translationDistricts[v].T for v in options.district track by v" ng-change="getAreaByDistrict()"></select>
+            </div>
+            <div class="form-group">
+              <label class="label" for="area">地標</label>
+              <select class="form-control" name="" id="area" ng-model="input.area"
+                      ng-options="translationAreas[v].T for v in options.area track by v"
+                      ng-change="trackAreaChange()"></select>
+            </div>
+            <div class="form-group">
+              <label class="label" for="gender" >性別</label>
+              <select class="form-control" name="" id="gender" ng-model="input.gender"
+                      ng-options="translationGenders[v].T for v in options.gender track by v"
+                      ng-change="trackGenderChange()"></select>
+            </div>
+            <div class="form-group">
+              <label class="label" for="salary">薪金</label>
+              <input class="form-control" id="salary" type="text" ng-model="input.salary" type="number"
+                     ng-change="trackSalaryChange()"/>
+              <div id="salary-slider">
+                <input type="range" ng-model="input.salary" min="0" max="70000" step="1000"
+                       ng-change="trackSalaryChange()"/>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-4">
+          <div class="icon">
+            <!--TODO: Qiufeng-->
+            <!--Those are placeholders.-->
+            <!--Please change to real icons.-->
+            <img class='icon-1' src="images/icon6.png">
+            <img class='icon-2' src="images/icon6.png">
+            <img class='icon-3' src="images/icon6.png">
+            <img class='icon-4' src="images/icon6.png">
+            <img class='icon-5' src="images/icon6.png">
+            <img class='icon-6' src="images/icon6.png">
+            <img class='icon-7' src="images/icon6.png">
+            <img class='icon-8' src="images/icon6.png">
           </div>
-        </form>
+        </div>
+
       </div>
 
-      <div class="col-md-4 col-sm-4 col-xs-4">
-        <div class="icon">
-          <!--TODO: Qiufeng-->
-          <!--Those are placeholders.-->
-          <!--Please change to real icons.-->
-          <img class='icon-1' src="images/icon6.png">
-          <img class='icon-2' src="images/icon6.png">
-          <img class='icon-3' src="images/icon6.png">
-          <img class='icon-4' src="images/icon6.png">
-          <img class='icon-5' src="images/icon6.png">
-          <img class='icon-6' src="images/icon6.png">
-          <img class='icon-7' src="images/icon6.png">
-          <img class='icon-8' src="images/icon6.png">
+      <div class="row answer">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="answer-inner">
+            <div class="message">
+              <div class="message-front">您的月收入擊敗了該區</div>
+              <div class="message-number"></div>
+              <div class="message-back"></div>
+            </div>
+            <div class="description"></div>
+          </div>
         </div>
       </div>
 
-    </div>
-
-    <div class="row answer">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div class="answer-inner">
-          <div class="message">
-            <div class="message-front">您的月收入擊敗了該區</div>
-            <div class="message-number"></div>
-            <div class="message-back"></div>
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div salary-ranking-chart
+               area="{{input.area}}"
+               gender="{{input.gender}}"
+               salary="{{input.salary}}">
+            <!--<div class="figure-title">-->
+            <!--該區月收入分佈-->
+            <!--</div>-->
+            <svg class="chart" width="100%" height="200px" padding="0px"></svg>
           </div>
-          <div class="description"></div>
         </div>
       </div>
-    </div>
 
+
+    </div>
+  </div>
+</div>
+<!--end first container-->
+
+<div class="footer">
+  <div class="container">
     <div class="row">
       <div class="col-md-12 col-sm-12 col-xs-12">
-        <div salary-ranking-chart
-             area="{{input.area}}"
-             gender="{{input.gender}}"
-             salary="{{input.salary}}">
-          <!--<div class="figure-title">-->
-          <!--該區月收入分佈-->
-          <!--</div>-->
-          <svg class="chart" width="100%" height="200px" padding="0px"></svg>
-        </div>
-      </div>
-    </div>
-
-    <div class="row social">
-      <div class="col-md-12 col-sm-12 col-xs-12">
-        <div>
+        <div class="social">
           <div class="weibo">
             <a href="" ng-click="shareToWeibo()">
               <div class="share">分享到微博
@@ -108,6 +122,22 @@
         </div>
       </div>
     </div>
-
+    <div class="row info-initiumlab">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        Based on Hong Kong Census 2011 data set.
+        Designed by
+        <a href="http://initiumlab.com/">Initium Lab</a>
+      </div>
+    </div>
+    <div class="row info-initiummedia">
+      <!--TODO: Qiufeng-->
+      <!--Please change to the elements specified by marketing team -->
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        Initium Media Logo
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-6">
+        App Download Link
+      </div>
+    </div>
   </div>
 </div>
