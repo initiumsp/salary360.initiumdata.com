@@ -318,12 +318,12 @@ angular.module('salary360initiumdatacomApp')
               var tagY = y(data[ranking.binID][1]);
               console.log(tagX);
               console.log(tagY);
-              svg.append("text")
-                .attr("x", tagX)
-                .attr("y", tagY)
-                .attr("dy", "-1em")
-                .text("You")
-                .attr("class", "text highlight");
+              //svg.append("text")
+              //  .attr("x", tagX)
+              //  .attr("y", tagY)
+              //  .attr("dy", "-1em")
+              //  .text("You")
+              //  .attr("class", "text highlight");
             });
 
           //function type(d) {
