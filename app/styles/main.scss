@@ -63,40 +63,36 @@ h1 {
 }
 
 
-.message-front {
-  display: inline;
-  padding: 5px 0 5px 0;
-  margin: 5px 0 20px 0;
-  color: #014441;
-}
-
-.message-number {
-  font-size: 30px;
-  display: inline;
-  padding: 5px 0 5px 0;
-  margin: 5px 0 20px 0;
-  color: #eb0f6b;
-}
-
-.message-back {
-  display: inline;
-  padding: 5px 0 5px 0;
-  margin: 5px 0 20px 0;
-  color: #014441;
-}
-
 .answer {
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
   font-size: 1em;
   font-family: MHeiHK-Bold;
   color: #014441;
   .answer-inner {
-    padding-left: 1em;
-    padding-right: 1em;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
     padding-bottom: 0.5em;
     background: rgb(141,207,207);
     border-radius: 4px;
+    .message {
+      .message-front {
+        display: inline;
+        color: #014441;
+      }
+      .message-number {
+        font-size: 1.5em;
+        display: inline;
+        color: #eb0f6b;
+      }
+      .message-back {
+        display: inline;
+        color: #014441;
+      }
+    }
+    .description {
+      font-size: 0.8em;
+    }
   }
 }
 
