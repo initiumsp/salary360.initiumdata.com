@@ -128,7 +128,7 @@ angular.module('salary360initiumdatacomApp')
         var render = function(d3) {
           //console.log(scope);
 
-          var margin = {top: 20, right: 20, bottom: 30, left: 40};
+          var margin = {top: 10, right: 10, bottom: 10, left: 10};
           // Firefox has problem with .offsetWidth sometimes.. Use jquery one instead
           // Ref:
           //     http://stackoverflow.com/questions/15931374/firefox-offsetwidth-not-reporting-anything
