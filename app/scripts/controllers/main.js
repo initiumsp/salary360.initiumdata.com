@@ -127,7 +127,7 @@ angular.module('salary360initiumdatacomApp')
       var title = encodeURIComponent('這個遊戲挺有趣！'),
           url = encodeURIComponent('salary360.initiumlab.com');
       window.open('http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+url);
-      post('share', 'weibo');
+      $scope.post('share', 'weibo');
     };
 
     $scope.shareToFacebook = function () {
@@ -143,15 +143,27 @@ angular.module('salary360initiumdatacomApp')
         '&description=' + description +
         '&redirect_uri=' + url
       );
-      post('share', 'facebook');
+      $scope.post('share', 'facebook');
     };
 
     $scope.shareToWechat = function() {
       var divWechatShare = document.createElement('div');
       var textNode = document.createTextNode('請使用瀏覽器內置的分享功能');
       divWechatShare.appendChild(textNode);
+
+      divWechatShare.style.backgroundColor = '#333';
+      divWechatShare.id = 'divWechatShare';
+
+      divWechatShare.style.position = 'absolute';
+      divWechatShare.style.left = $('#btnWechatShare').offset().left + 'px';
+      divWechatShare.style.top = $('#btnWechatShare').offset().top - 50 + 'px';
+
+      divWechatShare.addEventListener('mousedown', function(event){
+        event.target.style.display = 'none';
+      });
+
       document.body.appendChild(divWechatShare);
-      post('share', 'wechat')
+      $scope.post('share', 'wechat')
     };
     // Sharing code ends
 
