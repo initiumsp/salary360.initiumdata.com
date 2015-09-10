@@ -11,6 +11,17 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /* D3 */
 
+h1 {
+  background-color: #870A3D;
+  color: white;
+  font-size: 23px;
+  font-family: PingFang SC;
+  padding: 5px;
+  margin-bottom: 1em;
+  margin-top: 0;
+  border-radius: 3px;
+}
+
 .bar {
   fill: white;
 
@@ -85,11 +96,17 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 
 .container {
-  padding-top: 1em;
+  padding-top: 2em;
 }
 
-#salary-slider {
+#salary-slider input{
   margin-top: 1em;
+  background-color: #5B6D6A;
+  width: 100%;
+  border-radius: 3px;
+  -webkit-appearance: none;
+  border: none;
+  height: 5px;
 }
 
 
@@ -104,29 +121,38 @@ body {
     background-color: #86d0ce;
 }
 
-
-label {
+/*
   color: white;
   width: 20%;
   height: 20px;
   max-width: 100px;
   font-weight: normal;
-  background-color: #014441;
   padding-left: 5px;
   padding-right: 5px;
   padding-top: 0px;
   padding-bottom: 0px;
   margin: 0px;
   border-radius: 3px;
+  */
+.question {
 }
 
-select {
-  height: 20px;
-  width: 78%;
+.label {
+  font-size: 14px;
+  background-color: #014441;
+  padding: 2px 20px;
+  border-radius: 4px;
+  width: 40%;
+}
+
+.form-control {
+  display: inline-block;
+  height: 22px;
+  width: 50%;
 }
 
 input {
-  width: 78%;
+  width: 50%;
 }
 
 .icon  {
@@ -162,7 +188,7 @@ input {
 }
 
 .chart {
-  max-width: 500px;
+  max-width: 600px;
 }
 
 .share {
