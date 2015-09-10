@@ -134,6 +134,9 @@ h1 {
     padding-left: 0;
     padding-right: 0;
   }
+  @media all and (min-width: 500px){
+    max-width: 500px;
+  }
 }
 
 #salary-slider {
