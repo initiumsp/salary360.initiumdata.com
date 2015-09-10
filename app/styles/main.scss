@@ -136,14 +136,17 @@ h1 {
   }
 }
 
-#salary-slider input{
-  margin-top: 1em;
-  background-color: #5B6D6A;
-  width: 100%;
-  border-radius: 3px;
-  -webkit-appearance: none;
-  border: none;
-  height: 5px;
+#salary-slider {
+  margin-bottom: 1em;
+  input{
+    margin-top: 1em;
+    background-color: #5B6D6A;
+    width: 100%;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    border: none;
+    height: 5px;
+  }
 }
 
 
@@ -213,6 +216,7 @@ input {
 
 .form-group {
   //max-width: 500px;
+  margin-bottom: 0.2em;
 }
 
 .chart {
