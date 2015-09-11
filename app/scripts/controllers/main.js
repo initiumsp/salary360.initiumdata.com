@@ -155,8 +155,8 @@ angular.module('salary360initiumdatacomApp')
       divWechatShare.id = 'divWechatShare';
 
       divWechatShare.style.position = 'absolute';
-      divWechatShare.style.left = $('#btnWechatShare').offset().left + 'px';
-      divWechatShare.style.top = $('#btnWechatShare').offset().top - 50 + 'px';
+      divWechatShare.style.left = $('#btnWechatShare').offset().left + $('#btnWechatShare').width() / 3 + 'px';
+      divWechatShare.style.top = $('#btnWechatShare').offset().top - $('#btnWechatShare').height() + 'px';
 
       divWechatShare.addEventListener('mousedown', function(event){
         event.target.style.display = 'none';
