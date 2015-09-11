@@ -130,16 +130,17 @@ angular.module('salary360initiumdatacomApp')
 
     $scope.handleFacebookShare = function(){
       var description = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】'),
-        url = encodeURI('http://salary360.initiumlab.com/'),
+        url = encodeURI('salary360.initiumlab.com'),
         title = encodeURIComponent('18區人工大比拼'),
         imageURL = encodeURIComponent(url + './images/cover-share.png');
 
-      var target_href = 'https://www.facebook.com/dialog/feed?app_id=1651657371748354' +
-        '&link=' + url +
-        '&picture=' + imageURL +
-        '&name=' + title +
-        '&description=' + description +
-        '&redirect_uri=' + url;
+      //var target_href = 'https://www.facebook.com/dialog/feed?app_id=1180811835286005' +
+      //  '&link=' + url +
+      //  '&picture=' + imageURL +
+      //  '&name=' + title +
+      //  '&description=' + description +
+      //  '&redirect_uri=' + url;
+      var target_href = "https://www.facebook.com/sharer/sharer.php?s=100&u=http%3A%2F%2Fsalary360.initiumlab.com";
       window.open(target_href);
       $scope.post('share', 'facebook')
     };
@@ -164,7 +165,7 @@ angular.module('salary360initiumdatacomApp')
 
       var anchor = document.getElementById('anchorFacebookShare');
       anchor.target = '_blank';
-      anchor.href = 'https://www.facebook.com/dialog/feed?app_id=1651657371748354' +
+      anchor.href = 'https://www.facebook.com/dialog/feed?app_id=1180811835286005' +
         '&link=' + url +
         '&picture=' + imageURL +
         '&name=' + title +
