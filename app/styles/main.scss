@@ -22,6 +22,7 @@ html, body, div {
   padding-bottom: 0.5em;
   .social {
     text-align: center;
+    padding-top: 15px;
     a :hover {
       background-color: #014441;
     }
@@ -206,6 +207,10 @@ input.form-control {
 
 input {
   width: 50%;
+}
+
+div .icon {
+margin-left: -20px;
 }
 
 .icon  {
