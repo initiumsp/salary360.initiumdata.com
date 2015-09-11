@@ -468,6 +468,16 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
+  grunt.registerTask('deploy:prod', [
+      'gh-pages'
+    ]
+  );
+
+  grunt.registerTask('deploy:staging', [
+      'rsync'
+    ]
+  );
+
   grunt.registerTask('test', [
     'clean:server',
     'wiredep',
