@@ -120,11 +120,28 @@ angular.module('salary360initiumdatacomApp')
 
     $scope.setUUID();
 
-    $scope.trackWeiboShare = function(){
+    $scope.handleWeiboShare = function(){
+      var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
+        url = encodeURIComponent('salary360.initiumlab.com');
+      var target_url = 'http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+url;
+      window.open(target_url);
       $scope.post('share', 'weibo');
     };
 
-    $scope.trackFacebookShare = function(){
+    $scope.handleFacebookShare = function(){
+      var description = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
+        url = encodeURIComponent('salary360.initiumlab.com'),
+        title = encodeURIComponent('18區人工大比拼'),
+        imageURL = encodeURIComponent(url + './images/cover-share.png');
+
+      var anchor = document.getElementById('anchorFacebookShare');
+      var target_href = 'https://www.facebook.com/dialog/feed?app_id=1651657371748354' +
+        '&link=' + url +
+        '&picture=' + imageURL +
+        '&name=' + title +
+        '&description=' + description +
+        '&redirect_uri=' + url;
+      window.open(target_href);
       $scope.post('share', 'facebook')
     };
 
@@ -156,7 +173,15 @@ angular.module('salary360initiumdatacomApp')
         '&redirect_uri=' + url;
     }());
 
+    $scope.wechatPopupOpened = false;
     $scope.shareToWechat = function() {
+
+      if ($scope.wechatPopupOpened) {
+        return;
+      } else {
+        $scope.wechatPopupOpened = true;
+      }
+
       var divWechatShare = document.createElement('div');
       var textNode = document.createTextNode('請使用瀏覽器內置的分享功能');
       divWechatShare.appendChild(textNode);
@@ -170,6 +195,7 @@ angular.module('salary360initiumdatacomApp')
 
       divWechatShare.addEventListener('mousedown', function(event){
         event.target.style.display = 'none';
+        $scope.wechatPopupOpened = false;
       });
 
       document.body.appendChild(divWechatShare);
