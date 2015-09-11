@@ -73,29 +73,36 @@ angular.module('salary360initiumdatacomApp')
       // Otherwise, get a UUID from server.
 
       "use strict";
-      if (localStorage.getItem('uuid')) {
-        this.uuid = localStorage.getItem('uuid');
-      } else {
-        var url = 'http://s.init.im:8081/utility/uuid/';
-        var uuid = 'DEFAULT'+Math.random().toString(); // In case UUID server fails
-        this.uuid = uuid;
-        localStorage.setItem('uuid', uuid);
-        var request = new XMLHttpRequest();
+      try {
+          if (localStorage.getItem('uuid')) {
+            this.uuid = localStorage.getItem('uuid');
+          } else {
+            var url = 'http://s.init.im:8081/utility/uuid/';
+            var uuid = 'DEFAULT'+Math.random().toString(); // In case UUID server fails
+            this.uuid = uuid;
+            localStorage.setItem('uuid', uuid);
+            var request = new XMLHttpRequest();
 
-        request.open('GET', url, true);
-        var self = this;
-        request.onload = function () {
-          console.log('UUID server responded');
-          if (request.status >= 200 && request.status < 400) {
-            var response = JSON.parse(request.responseText);
-            if (response.success) {
-              uuid = response.data.uuid;
-            }
+            request.open('GET', url, true);
+            var self = this;
+            request.onload = function () {
+              console.log('UUID server responded');
+              if (request.status >= 200 && request.status < 400) {
+                var response = JSON.parse(request.responseText);
+                if (response.success) {
+                  uuid = response.data.uuid;
+                }
+              }
+              self.uuid = uuid;
+              localStorage.setItem('uuid', uuid);
+            };
+            request.send();
           }
-          self.uuid = uuid;
-          localStorage.setItem('uuid', uuid);
-        };
-        request.send();
+        }
+      catch (error) {
+        this.uuid = 'DEFAULT'+Math.random().toString();
+        console.log('UUID error');
+        $scope.post('UUID setting error', '');
       }
     };
 
@@ -119,6 +126,7 @@ angular.module('salary360initiumdatacomApp')
     };
 
     $scope.setUUID();
+    $scope.post('render', '');
 
     $scope.handleWeiboShare = function(){
       var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】'),
@@ -152,9 +160,6 @@ angular.module('salary360initiumdatacomApp')
     var setWeiboShare = (function () {
       var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
           url = encodeURIComponent('salary360.initiumlab.com');
-      var anchor = document.getElementById('anchorWeiboShare');
-      anchor.href ='http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+url;
-      anchor.target = '_blank';
     }());
 
     var setFacebookShare = (function () {
@@ -162,15 +167,6 @@ angular.module('salary360initiumdatacomApp')
         url = encodeURIComponent('salary360.initiumlab.com'),
         title = encodeURIComponent('18區人工大比拼'),
         imageURL = encodeURIComponent(url + './images/cover-share.png');
-
-      var anchor = document.getElementById('anchorFacebookShare');
-      anchor.target = '_blank';
-      anchor.href = 'https://www.facebook.com/dialog/feed?app_id=1180811835286005' +
-        '&link=' + url +
-        '&picture=' + imageURL +
-        '&name=' + title +
-        '&description=' + description +
-        '&redirect_uri=' + url;
     }());
 
     $scope.wechatPopupOpened = false;
