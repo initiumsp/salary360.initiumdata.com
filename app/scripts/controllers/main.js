@@ -120,31 +120,41 @@ angular.module('salary360initiumdatacomApp')
 
     $scope.setUUID();
 
-    // Tracking code ends
-
-    // Sharing code begi
-    $scope.shareToWeibo = function () {
-      var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
-          url = encodeURIComponent('salary360.initiumlab.com');
-      window.open('http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+url);
+    $scope.trackWeiboShare = function(){
       $scope.post('share', 'weibo');
     };
 
-    $scope.shareToFacebook = function () {
+    $scope.trackFacebookShare = function(){
+      $scope.post('share', 'facebook')
+    };
+
+
+    // Tracking code ends
+
+    // Sharing code begins
+    var setWeiboShare = (function () {
+      var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
+          url = encodeURIComponent('salary360.initiumlab.com');
+      var anchor = document.getElementById('anchorWeiboShare');
+      anchor.href ='http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+url;
+      anchor.target = '_blank';
+    }());
+
+    var setFacebookShare = (function () {
       var description = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
         url = encodeURIComponent('salary360.initiumlab.com'),
         title = encodeURIComponent('18區人工大比拼'),
         imageURL = encodeURIComponent(url + './images/cover-share.png');
 
-      window.open('https://www.facebook.com/dialog/feed?app_id=1651657371748354' +
+      var anchor = document.getElementById('anchorFacebookShare');
+      anchor.target = '_blank';
+      anchor.href = 'https://www.facebook.com/dialog/feed?app_id=1651657371748354' +
         '&link=' + url +
         '&picture=' + imageURL +
         '&name=' + title +
         '&description=' + description +
-        '&redirect_uri=' + url
-      );
-      $scope.post('share', 'facebook');
-    };
+        '&redirect_uri=' + url;
+    }());
 
     $scope.shareToWechat = function() {
       var divWechatShare = document.createElement('div');

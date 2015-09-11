@@ -252,25 +252,25 @@ angular.module('salary360initiumdatacomApp')
 
               //Social Functions
 
-              //TODO: ONLINE
-              //      Change to the deployment server address
-              var shareURLSina = 'http://v.t.sina.com.cn/share/share.php?title=我的收入擊敗了'
-                + percentage
-                + '的香港'
-                + genderToName[scope.gender]
-                + '，快來試試你的吧&amp;url=http://192.168.1.6/salary360/';
-              d3.select('.social .weibo a').attr('href', shareURLSina);
-
-              var description = encodeURIComponent('我的收入擊敗了' + percentage + '的香港' + genderToName[scope.gender] + '，快來試試你的吧');
-              var url = encodeURIComponent('http://bc3f09dc.ngrok.io');
-              var title = document.getElementsByTagName('h1')[0].innerText;
-
-              var shareURLFacebook = 'https://www.facebook.com/dialog/feed?app_id=1651657371748354' +
-                '&link=' + url +
-                '&name=' + title +
-                '&description=' + description +
-                '&redirect_uri=' + url;
-              d3.select('.social .facebook a').attr('href', shareURLFacebook);
+              ////TODO: ONLINE
+              ////      Change to the deployment server address
+              //var shareURLSina = 'http://v.t.sina.com.cn/share/share.php?title=我的收入擊敗了'
+              //  + percentage
+              //  + '的香港'
+              //  + genderToName[scope.gender]
+              //  + '，快來試試你的吧&amp;url=http://192.168.1.6/salary360/';
+              //d3.select('.social .weibo a').attr('href', shareURLSina);
+              //
+              //var description = encodeURIComponent('我的收入擊敗了' + percentage + '的香港' + genderToName[scope.gender] + '，快來試試你的吧');
+              //var url = encodeURIComponent('http://bc3f09dc.ngrok.io');
+              //var title = document.getElementsByTagName('h1')[0].innerText;
+              //
+              //var shareURLFacebook = 'https://www.facebook.com/dialog/feed?app_id=1651657371748354' +
+              //  '&link=' + url +
+              //  '&name=' + title +
+              //  '&description=' + description +
+              //  '&redirect_uri=' + url;
+              //d3.select('.social .facebook a').attr('href', shareURLFacebook);
 
               //ranking['ratio']
 
