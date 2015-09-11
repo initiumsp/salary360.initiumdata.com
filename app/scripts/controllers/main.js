@@ -124,14 +124,14 @@ angular.module('salary360initiumdatacomApp')
 
     // Sharing code begi
     $scope.shareToWeibo = function () {
-      var title = encodeURIComponent('這個遊戲挺有趣！'),
+      var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
           url = encodeURIComponent('salary360.initiumlab.com');
       window.open('http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+url);
       $scope.post('share', 'weibo');
     };
 
     $scope.shareToFacebook = function () {
-      var description = encodeURIComponent('這個遊戲挺有趣！'),
+      var description = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
         url = encodeURIComponent('salary360.initiumlab.com'),
         title = encodeURIComponent('18區人工大比拼'),
         imageURL = encodeURIComponent(url + './images/cover-share.png');
