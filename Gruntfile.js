@@ -385,6 +385,7 @@ module.exports = function (grunt) {
             '*.html',
             'views/{,*/}*.html',
             'images/{,*/}*.{webp}',
+            'images/cover-share.png',
             'styles/fonts/{,*/}*.*'
           ]
         }, {
@@ -404,6 +405,15 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      customassets: {
+        expand: true,
+        dot: true,
+        cwd: '<%= yeoman.app %>',
+        dest: '<%= yeoman.dist %>',
+        src: [
+          'images/cover-share.png'
+        ]
       }
     },
 
@@ -501,7 +511,8 @@ module.exports = function (grunt) {
     'uglify',
     'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'copy:customassets'
   ]);
 
   // This is for quick testing of Grunt tasks
