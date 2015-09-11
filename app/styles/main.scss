@@ -3,11 +3,14 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+$fontfamily: MHeiHK-Medium, sans-serif;
+
 html, body, div {
   margin: 0;
   padding: 0;
   width: 100%;
   display: block;
+  font-family: $fontfamily;
 }
 
 .row {
@@ -22,6 +25,7 @@ html, body, div {
   padding-bottom: 0.5em;
   .social {
     text-align: center;
+    padding-top: 15px;
     a :hover {
       background-color: #014441;
     }
@@ -45,7 +49,7 @@ h1 {
   background-color: #870A3D;
   color: white;
   font-size: 1.3em;
-  font-family: PingFang SC;
+  font-family: $fontfamily;
   border-radius: 3px;
   text-align: center;
 }
@@ -83,7 +87,7 @@ h1 {
   // You can make some spacing by padding here.
   .answer-inner {
     font-size: 1em;
-    font-family: MHeiHK-Bold;
+    font-family: $fontfamily;
     color: #014441;
     padding-left: 0.2em;
     padding-right: 0.2em;
@@ -206,6 +210,10 @@ input.form-control {
 
 input {
   width: 50%;
+}
+
+div .icon {
+margin-left: -30px;
 }
 
 .icon  {
