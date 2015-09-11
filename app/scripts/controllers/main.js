@@ -121,7 +121,7 @@ angular.module('salary360initiumdatacomApp')
     $scope.setUUID();
 
     $scope.handleWeiboShare = function(){
-      var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
+      var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】'),
         url = encodeURIComponent('salary360.initiumlab.com');
       var target_url = 'http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+url;
       window.open(target_url);
@@ -129,7 +129,7 @@ angular.module('salary360initiumdatacomApp')
     };
 
     $scope.handleFacebookShare = function(){
-      var description = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 INITIUMLAB 出品,玩轉大數據】'),
+      var description = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】'),
         url = encodeURI('http://salary360.initiumlab.com/'),
         title = encodeURIComponent('18區人工大比拼'),
         imageURL = encodeURIComponent(url + './images/cover-share.png');
