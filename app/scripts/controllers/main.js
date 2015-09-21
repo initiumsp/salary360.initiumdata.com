@@ -141,7 +141,6 @@ angular.module('salary360initiumdatacomApp')
         url = encodeURI('salary360.initiumlab.com'),
         title = encodeURIComponent('18區人工大比拼'),
         imageURL = encodeURIComponent(url + './images/cover-share.png');
-
       //var target_href = 'https://www.facebook.com/dialog/feed?app_id=1180811835286005' +
       //  '&link=' + url +
       //  '&picture=' + imageURL +
@@ -152,6 +151,30 @@ angular.module('salary360initiumdatacomApp')
       window.open(target_href);
       $scope.post('share', 'facebook')
     };
+
+/*
+    var dataForWeixin = {  
+        appId: "",
+        imgUrl: './images/cover-share.png',  
+        lineLink: 'salary360.initiumlab.com',  
+        shareTitle: '18區人工大比拼',  
+        descContent: '月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】',  
+    };  
+
+   function onBridgeReady() {
+      WeixinJSBridge.invoke('shareTimeline',{
+        "appid": dataForWeixin.appId, 
+        "img_url": dataForWeixin.imgUrl,
+        "img_width": "640",
+        "img_height": "640",
+        "link": dataForWeixin.lineLink,
+        "desc": dataForWeixin.descContent,
+        "title": dataForWeixin.shareTitle
+      }, function(res) {
+        _report('timeline', res.err_msg);
+      });
+    }
+*/
 
 
     // Tracking code ends
@@ -169,6 +192,10 @@ angular.module('salary360initiumdatacomApp')
         imageURL = encodeURIComponent(url + './images/cover-share.png');
     }());
 
+//share for wechat
+
+
+/*
     $scope.wechatPopupOpened = false;
     $scope.shareToWechat = function() {
 
@@ -197,6 +224,7 @@ angular.module('salary360initiumdatacomApp')
       document.body.appendChild(divWechatShare);
       $scope.post('share', 'wechat')
     };
+  */
     // Sharing code ends
 
 

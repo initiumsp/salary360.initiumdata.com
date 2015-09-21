@@ -1,3 +1,5 @@
+'use strict';
+
 window.console.log('XDomain loaded');
 // XDomain - v0.7.3 - https://github.com/jpillora/xdomain
 // Jaime Pillora <dev@jpillora.com> - MIT Copyright 2015

@@ -1,3 +1,4 @@
+<div style="opacity: 0; height: 0"> <img src="images/icon.png"/></div>
 <div class="container">
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -119,6 +120,7 @@
               </div>
             </a>
           </div>
+          <div id="qrcode"><img src="images/qrcode2.png"/></div>
         </div>
         <div class="initiumlogo">
           <img src="images/logo_inside_white.png">
@@ -146,3 +148,12 @@
   -->
   </div>
 </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#btnWechatShare").click(function(){
+        $("#qrcode").toggle();
+    });
+  });
+  </script>
