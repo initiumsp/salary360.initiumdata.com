@@ -149,7 +149,7 @@ angular.module('salary360initiumdatacomApp')
       //  '&name=' + title +
       //  '&description=' + description +
       //  '&redirect_uri=' + url;
-      var target_href = "https://www.facebook.com/sharer/sharer.php?s=100&u=http%3A%2F%2Fsalary360.initiumlab.com";
+      var target_href = "https://www.facebook.com/sharer/sharer.php?s=100&u="+url;
       window.open(target_href);
       $scope.post('share', 'facebook')
     };
