@@ -126,7 +126,7 @@ angular.module('salary360initiumdatacomApp')
     };
 
     $scope.setUUID();
-    $scope.post('render', '');
+    $scope.post('render', window.location.href);
 
     $scope.handleWeiboShare = function(){
       var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】'),
