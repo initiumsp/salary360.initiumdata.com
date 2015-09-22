@@ -260,6 +260,7 @@ angular.module('salary360initiumdatacomApp')
                 .attr("class", "bar");
 
               updates
+                .transition()
                 .attr("x", function(d) { return x(d[0]); })
                 .attr("width", x.rangeBand())
                 .attr("y", function(d) { return y(d[1]); })
@@ -269,9 +270,10 @@ angular.module('salary360initiumdatacomApp')
 
               var allBar = d3.selectAll(".bar");
               allBar.attr("class", "bar");
-              allBar.filter(function(d){
+              var highlightBar = allBar.filter(function(d){
                 return d[0] === ranking.binName;
-              }).attr("class", "bar highlight");
+              });
+              highlightBar.attr("class", "bar highlight");
 
               var tagX = x(data[ranking.binID][0]);
               var tagY = y(data[ranking.binID][1]);
@@ -284,6 +286,7 @@ angular.module('salary360initiumdatacomApp')
               textYou.exit().remove();
               textYou.enter().append('text').text("You").attr('class', 'text-you text highlight');
               textYou
+                .transition()
                 .attr("x", function(d){return d.tagX;})
                 .attr("y", function(d){return d.tagY;})
                 .attr("dy", "-0.5em")
