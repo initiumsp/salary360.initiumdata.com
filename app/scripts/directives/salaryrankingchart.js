@@ -167,8 +167,8 @@ angular.module('salary360initiumdatacomApp')
         //svg.selectAll("g").remove();
         //svg.selectAll("rect").remove();
         //svg.selectAll("text").remove();
-        svg.append("g")
-          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        //svg.append("g")
+        //  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
         var ratioToNumber = function(ratio){
           // Defensive assignment
@@ -204,11 +204,11 @@ angular.module('salary360initiumdatacomApp')
           var apiUrl = apiPrefix + '/census2011/areas/' + scope.area + '/' + scope.gender + '/data.csv';
           d3.csv(apiUrl,
             function(d){
-              svg.selectAll("g").remove();
-              svg.selectAll("rect").remove();
-              svg.selectAll("text").remove();
-              svg.append("g")
-                .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+              //svg.selectAll("g").remove();
+              //svg.selectAll("rect").remove();
+              //svg.selectAll("text").remove();
+              //svg.append("g")
+              //  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
               var data = d.map(function(x){
                 return [x.row, x.value];
@@ -246,30 +246,48 @@ angular.module('salary360initiumdatacomApp')
               x.domain(data.map(function(d) { return d[0]; }));
               y.domain([0, 1.2 * d3.max(data, function(d) { return +d[1]; })]);
 
-              var updates = svg.selectAll(".bar").data(data);
+              var updates = svg.selectAll(".bar").data(data, function(d){
+                return d[0];
+              });
+
+              // Length of updates sets
+              //console.log('updates: ' + updates.length);
+              //console.log('enter: ' + updates.enter().length);
+              //console.log('exit: ' + updates.exit().length);
+
               updates.exit().remove();
               updates.enter().append("rect")
-                .attr("class", "bar")
+                .attr("class", "bar");
+
+              updates
                 .attr("x", function(d) { return x(d[0]); })
                 .attr("width", x.rangeBand())
                 .attr("y", function(d) { return y(d[1]); })
                 .attr("height", function(d) { return height - y(d[1]); });
+
               //window.u = updates;
-              d3.selectAll(".bar").filter(function(d){
+
+              var allBar = d3.selectAll(".bar");
+              allBar.attr("class", "bar");
+              allBar.filter(function(d){
                 return d[0] === ranking.binName;
               }).attr("class", "bar highlight");
 
               var tagX = x(data[ranking.binID][0]);
               var tagY = y(data[ranking.binID][1]);
-              console.log(tagX);
-              console.log(tagY);
-              svg.append("text")
-                .attr("x", tagX)
-                .attr("y", tagY)
+
+              var textYou = svg.selectAll('.text-you').data(
+                [{'tagX': tagX, 'tagY': tagY}],
+                function(d){
+                  return 'text-you-tag-pos';
+                });
+              textYou.exit().remove();
+              textYou.enter().append('text').text("You").attr('class', 'text-you text highlight');
+              textYou
+                .attr("x", function(d){return d.tagX;})
+                .attr("y", function(d){return d.tagY;})
                 .attr("dy", "-0.5em")
                 .attr("dx", "0.2em")
-                .text("You")
-                .attr("class", "text highlight");
             });
 
         };
