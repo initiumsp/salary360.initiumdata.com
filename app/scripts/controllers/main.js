@@ -149,7 +149,7 @@ angular.module('salary360initiumdatacomApp')
       //  '&name=' + title +
       //  '&description=' + description +
       //  '&redirect_uri=' + url;
-      var target_href = "https://www.facebook.com/sharer/sharer.php?s=100&u=salary360wechat.initiumlab.com";
+      var target_href = "https://www.facebook.com/sharer/sharer.php?s=100&u=salary360.initiumlab.com";
       window.open(target_href);
       $scope.post('share', 'facebook')
     };
