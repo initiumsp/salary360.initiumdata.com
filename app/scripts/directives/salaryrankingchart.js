@@ -230,14 +230,14 @@ angular.module('salary360initiumdatacomApp')
 
               var messages = [
                 'Nothing here!', // Number 0 does not exist. Start from 1.
-                '請儘快到房屋署申請公屋,捱多幾年就可以上樓',
-                '呢個⽉係咪⼜無畀家用呢?',
-                '公屋無你份,私樓⼜租唔起',
+                '快D到房屋署申請公屋，加油！捱多幾年就上樓！',
+                '呢個月係咪又無畀家用呢？',
+                '公屋無你份，居屋抽唔到，私樓又租唔起',
                 '週末睇戲可以揀3D',
-                '唸住買名牌⼿袋?食成個⽉菠蘿包就得啦!',
-                '間中可以搭的⼠返⼯',
-                '聖誕假北海道、濟州島任你揀!',
-                '請來中環迎接人生巔峰!',
+                '諗住買名牌手袋？食成個月菠蘿包就得嘅...應該',
+                '間中可以搭的士返工，係爽嘅',
+                '放假想去旅行？關島、加州任你揀！',
+                '都人上人啦，你仲想點呀？',
               ];
 
               descriptionDiv.append('div')
@@ -318,12 +318,13 @@ angular.module('salary360initiumdatacomApp')
               var tagY = y(data[ranking.binID][1]);
               console.log(tagX);
               console.log(tagY);
-              //svg.append("text")
-              //  .attr("x", tagX)
-              //  .attr("y", tagY)
-              //  .attr("dy", "-1em")
-              //  .text("You")
-              //  .attr("class", "text highlight");
+              svg.append("text")
+                .attr("x", tagX)
+                .attr("y", tagY)
+                .attr("dy", "-0.5em")
+                .attr("dx", "0.2em")
+                .text("You")
+                .attr("class", "text highlight");
             });
 
           //function type(d) {

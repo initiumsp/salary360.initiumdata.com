@@ -1,3 +1,4 @@
+<div style="opacity: 0; height: 0"> <img src="images/icon.png"/></div>
 <div class="container">
   <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -64,7 +65,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="answer-inner">
             <div class="message">
-              <div class="message-front">您的月收入擊敗了該區</div>
+              <div class="message-front">你的月收入擊敗了該區</div>
               <div class="message-number"></div>
               <div class="message-back"></div>
             </div>
@@ -100,28 +101,33 @@
         <div class="social">
           <div class="facebook">
             <a href="" id="anchorFacebookShare" ng-click="handleFacebookShare()">
-              <div class="share">分享到facebook
-                <img src="images/FB-f-Logo__blue_50.png">
+              <div class="share">
+                <img src="images/FB-f-Logo__white_50.png">
               </div>
             </a>
           </div>
           <div class="weibo">
             <a href="" id="anchorWeiboShare" ng-click="handleWeiboShare()">
-              <div class="share">分享到微博
-                <img src="images/weibo_48x48.png">
+              <div class="share">
+                <img src="images/weibo_96x96_white.png">
               </div>
             </a>
           </div>
           <div class="wechat" id="btnWechatShare" ng-click="shareToWechat()">
             <a href="" id="anchorWechatShare">
-              <div class="share">分享到微信
-                <img src="images/wechat_50x50.png">
+              <div class="share">
+                <img src="images/wechat_96x96_white.png">
               </div>
             </a>
           </div>
+          <div id="qrcode"><img src="images/qrcode2.png"/></div>
+        </div>
+        <div class="initiumlogo">
+          <img src="images/logo_inside_white.png">
         </div>
       </div>
     </div>
+
     <div class="row info-initiumlab">
       <div class="col-md-12 col-sm-12 col-xs-12">
         Based on
@@ -129,9 +135,8 @@
         open data.
       </div>
     </div>
+    <!--
     <div class="row info-initiummedia">
-      <!--TODO: Qiufeng-->
-      <!--Please change to the elements specified by marketing team -->
       <div class="col-md-3 col-sm-3 col-xs-3"></div>
       <div class="col-md-3 col-sm-3 col-xs-3">
         <img style="width:70px" src="images/logo_inside_white.png">
@@ -140,5 +145,15 @@
         <img style="width:70px" src="images/qrcode.png">
       </div>
     </div>
+  -->
   </div>
 </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $("#btnWechatShare").click(function(){
+        $("#qrcode").toggle();
+    });
+  });
+  </script>
