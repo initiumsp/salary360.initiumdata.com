@@ -23,10 +23,20 @@ module.exports = function (grunt) {
   grunt.initConfig({
 
     'gh-pages': {
-      options: {
-        base: 'dist'
+      'facebook': {
+        options: {
+          base: 'dist'
+        },
+        src: ['**']
       },
-      src: ['**']
+      'wechat': {
+        options: {
+          base: 'dist',
+		  repo: 'git@github.com:initiumlab/salary360-wechat.git',
+		  branch: 'gh-pages'
+        },
+        src: ['**']
+      }
     },
 
     // Project settings
@@ -414,6 +424,24 @@ module.exports = function (grunt) {
         src: [
           'images/cover-share.png'
         ]
+      },
+      cnameFacebook: {
+        expand: true,
+        dot: true,
+        cwd: '<%= yeoman.app %>/cnames/facebook/',
+        dest: '<%= yeoman.dist %>',
+        src: [
+          'CNAME'
+        ]
+      },
+      cnameWechat: {
+        expand: true,
+        dot: true,
+        cwd: '<%= yeoman.app %>/cnames/wechat/',
+        dest: '<%= yeoman.dist %>',
+        src: [
+          'CNAME'
+        ]
       }
     },
 
@@ -478,8 +506,15 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask('deploy:prod', [
-      'gh-pages'
+  grunt.registerTask('deploy:facebook', [
+  	  'copy:cnameFacebook',
+      'gh-pages:facebook'
+    ]
+  );
+
+  grunt.registerTask('deploy:wechat', [
+  	  'copy:cnameWechat',
+      'gh-pages:wechat'
     ]
   );
 
