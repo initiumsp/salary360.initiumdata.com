@@ -155,17 +155,17 @@ angular.module('salary360initiumdatacomApp')
     };
 
 /*
-    var dataForWeixin = {  
+    var dataForWeixin = {
         appId: "",
-        imgUrl: './images/cover-share.png',  
-        lineLink: 'salary360.initiumlab.com',  
-        shareTitle: '18區人工大比拼',  
-        descContent: '月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】',  
-    };  
+        imgUrl: './images/cover-share.png',
+        lineLink: 'salary360.initiumlab.com',
+        shareTitle: '18區人工大比拼',
+        descContent: '月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】',
+    };
 
    function onBridgeReady() {
       WeixinJSBridge.invoke('shareTimeline',{
-        "appid": dataForWeixin.appId, 
+        "appid": dataForWeixin.appId,
         "img_url": dataForWeixin.imgUrl,
         "img_width": "640",
         "img_height": "640",
@@ -261,5 +261,19 @@ angular.module('salary360initiumdatacomApp')
     };
 
     $('input[type="range"]').val(10).change();
+
+    $scope.isWeixinBrowser = function(){
+      var ua = navigator.userAgent.toLowerCase();
+      if(ua.match(/MicroMessenger/i)=="micromessenger") {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    $('#wechat-share-prompt').hide();
+    $scope.toggleWechatShare = function(){
+      $('#wechat-share-prompt').toggle();
+    }
 
   }]);

@@ -29,7 +29,6 @@ html, body, div {
     text-align: center;
     padding: 30px 30px 30px;
     display: inline-block;
-    width: 70%;
     a :hover {
       background-color: #014441;
     }
@@ -161,6 +160,13 @@ h1 {
   }
 }
 
+#units {
+  font-size: 13px;
+  display: inline-block;
+  color: #014441;
+  width: 20%;
+}
+
 #salary-slider {
   margin-bottom: 1em;
   input{
@@ -273,6 +279,10 @@ input.form-control {
 
 input {
   width: 50%;
+}
+
+input#salary {
+  width:30%;
 }
 
 div .icon {
