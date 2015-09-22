@@ -125,43 +125,85 @@ angular.module('salary360initiumdatacomApp')
           };
         };
 
+        var chartQueryString = 'svg.chart#salary-chart';
+
+        var margin = {top: 10, right: 10, bottom: 10, left: 10};
+        // Firefox has problem with .offsetWidth sometimes.. Use jquery one instead
+        // Ref:
+        //     http://stackoverflow.com/questions/15931374/firefox-offsetwidth-not-reporting-anything
+        //var actualWidth = document.querySelector('.chart').offsetWidth;
+        var actualWidth = $(chartQueryString).width();
+        //var actualHeight = document.querySelector('.chart').offsetHeight;
+        var actualHeight = $(chartQueryString).height();
+        var width = actualWidth - margin.left - margin.right;
+        var height = actualHeight - margin.top - margin.bottom;
+
+        var x = d3.scale.ordinal()
+          .rangeRoundBands([0, width], 0.1);
+
+        var y = d3.scale.linear()
+          .range([height, 0]);
+
+
+        var xAxis = d3.svg.axis()
+          .scale(x)
+          .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+          .scale(y)
+          .orient("left")
+          .ticks(10, "%");
+
+        var apiPrefix = 'api';
+
+        var genderToName = {
+          'male': '男性',
+          'female': '女性',
+          'both': '人',
+        };
+
+        // The outer framework
+        var svg = d3.select(chartQueryString);
+        //svg.selectAll("g").remove();
+        //svg.selectAll("rect").remove();
+        //svg.selectAll("text").remove();
+        svg.append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        var ratioToNumber = function(ratio){
+          // Defensive assignment
+          var number = 0;
+          if ( ratio <= 0.25 ) {
+            number = 1;
+          }
+          if ( (0.25 < ratio) && (ratio <= 0.85) ) {
+            number = Math.floor((ratio - 0.15) / 0.1) + 1;
+          }
+          if ( ratio > 0.85 ) {
+            number = 8;
+          }
+          return number;
+        };
+
+        var ratioToMessage = function(ratio){
+          var messages = [
+            'Nothing here!', // Number 0 does not exist. Start from 1.
+            '赶紧申请廉租屋',
+            '基本上就是月光了……',
+            '廉租房申不到，商品房买不起',
+            '周末看电影，可以选3D的看……',
+            '想买iPhone？吃一个月方便面就存够钱了……吧',
+            '偶尔上班还能打的，也是挺爽的',
+            '放假想去旅行？美洲、欧洲随意选！',
+            '走上人生巅峰，想想还有点小激动呢'
+          ];
+          return messages[ratioToNumber(ratio)];
+        };
+
         var render = function(d3) {
-          //console.log(scope);
-
-          var margin = {top: 10, right: 10, bottom: 10, left: 10};
-          // Firefox has problem with .offsetWidth sometimes.. Use jquery one instead
-          // Ref:
-          //     http://stackoverflow.com/questions/15931374/firefox-offsetwidth-not-reporting-anything
-          //var actualWidth = document.querySelector('.chart').offsetWidth;
-          var actualWidth = $('.chart').width();
-          //var actualHeight = document.querySelector('.chart').offsetHeight;
-          var actualHeight = $('.chart').height();
-          var width = actualWidth - margin.left - margin.right;
-          var height = actualHeight - margin.top - margin.bottom;
-
-          var x = d3.scale.ordinal()
-            .rangeRoundBands([0, width], 0.1);
-
-          var y = d3.scale.linear()
-            .range([height, 0]);
-
-
-          var xAxis = d3.svg.axis()
-            .scale(x)
-            .orient("bottom");
-
-          var yAxis = d3.svg.axis()
-            .scale(y)
-            .orient("left")
-            .ticks(10, "%");
-
-          var apiPrefix = 'api';
-          var apiUrl = apiPrefix + '/census2011/areas/' +
-            scope.area + '/' + scope.gender + '/data.csv';
-
+          var apiUrl = apiPrefix + '/census2011/areas/' + scope.area + '/' + scope.gender + '/data.csv';
           d3.csv(apiUrl,
             function(d){
-              var svg = d3.select("svg.chart#salary-chart");
               svg.selectAll("g").remove();
               svg.selectAll("rect").remove();
               svg.selectAll("text").remove();
@@ -173,12 +215,19 @@ angular.module('salary360initiumdatacomApp')
               });
 
               var ranking = calculateRanking(d, scope.salary, salaryRangeMapping);
+              var percentage = Math.floor(ranking.ratio * 100) + '%';
 
               var divMessageNumber = d3.select('.message-number');
               divMessageNumber.selectAll('div').remove();
+              divMessageNumber.append('div')
+                .text(percentage)
+                .attr('class', 'message-number');
 
               var divMessageBack = d3.select('.message-back');
               divMessageBack.selectAll('div').remove();
+              divMessageBack.append('div')
+                .text('的' + genderToName[scope.gender])
+                .attr('class', 'message-back');
 
               var descriptionDiv = d3.select('.description');
               descriptionDiv.selectAll('div').remove();
@@ -186,58 +235,13 @@ angular.module('salary360initiumdatacomApp')
               var iconDiv = d3.select('.icon');
               iconDiv.selectAll('div').remove();
 
-              var genderToName = {
-                'male': '男性',
-                'female': '女性',
-                'both': '人',
-              };
-
-              var percentage = Math.floor(ranking.ratio * 100) + '%';
-
-              divMessageNumber.append('div')
-                .text(percentage)
-                .attr('class', 'message-number');
-
-              divMessageBack.append('div')
-                .text('的' + genderToName[scope.gender])
-                .attr('class', 'message-back');
-
-
-
-              var ratioToNumber = function(ratio){
-                // Defensive assignment
-                var number = 0;
-                if ( ratio <= 0.25 ) {
-                  number = 1;
-                }
-                if ( (0.25 < ratio) && (ratio <= 0.85) ) {
-                  number = Math.floor((ratio - 0.15) / 0.1) + 1;
-                }
-                if ( ratio > 0.85 ) {
-                  number = 8;
-                }
-                return number
-              };
-
-              var number = ratioToNumber(ranking.ratio);
-
-              var messages = [
-                'Nothing here!', // Number 0 does not exist. Start from 1.
-                '赶紧申请廉租屋',
-                '基本上就是月光了……',
-                '廉租房申不到，商品房买不起',
-                '周末看电影，可以选3D的看……',
-                '想买iPhone？吃一个月方便面就存够钱了……吧',
-                '偶尔上班还能打的，也是挺爽的',
-                '放假想去旅行？美洲、欧洲随意选！',
-                '走上人生巅峰，想想还有点小激动呢',
-              ];
-
+              var ratioNumber = ratioToNumber(ranking.ratio);
+              var ratioMessage = ratioToMessage(ranking.ratio);
               descriptionDiv.append('div')
-                .text(messages[number]);
+                .text(ratioMessage);
 
               iconDiv.selectAll('img').style('visibility', 'hidden');
-              iconDiv.select('.icon-' + number).style('visibility', 'visible');
+              iconDiv.select('.icon-' + ratioNumber).style('visibility', 'visible');
 
               x.domain(data.map(function(d) { return d[0]; }));
               y.domain([0, 1.2 * d3.max(data, function(d) { return +d[1]; })]);
