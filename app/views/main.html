@@ -4,7 +4,7 @@
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-          <h1>18區人工大比拼 你份糧攞第幾?</h1>
+          <h1>如果住在香港，你的收入能击败多少邻居？</h1>
         </div>
       </div>
 
@@ -13,16 +13,16 @@
           <form action="" >
             <div class="form-group">
               <label class="label" for="region">地域</label>
-              <select class="form-control" name="" id="region" ng-model="input.region" ng-options="translationRegions[v].T for v in options.region track by v" ng-change="getDistrictByRegion()"></select>
+              <select class="form-control" name="" id="region" ng-model="input.region" ng-options="translationRegions[v].S for v in options.region track by v" ng-change="getDistrictByRegion()"></select>
             </div>
             <div class="form-group">
-              <label class="label" for="district">地區</label>
-              <select class="form-control" name="" id="district" ng-model="input.district" ng-options="translationDistricts[v].T for v in options.district track by v" ng-change="getAreaByDistrict()"></select>
+              <label class="label" for="district">地区</label>
+              <select class="form-control" name="" id="district" ng-model="input.district" ng-options="translationDistricts[v].S for v in options.district track by v" ng-change="getAreaByDistrict()"></select>
             </div>
             <div class="form-group">
-              <label class="label" for="area">地標</label>
+              <label class="label" for="area">地标</label>
               <select class="form-control" name="" id="area" ng-model="input.area"
-                      ng-options="translationAreas[v].T for v in options.area track by v"
+                      ng-options="translationAreas[v].S for v in options.area track by v"
                       ng-change="trackAreaChange()"></select>
             </div>
             <div class="form-group">
@@ -65,7 +65,7 @@
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="answer-inner">
             <div class="message">
-              <div class="message-front">你的月收入擊敗了該區</div>
+              <div class="message-front">你的月收入击败了</div>
               <div class="message-number"></div>
               <div class="message-back"></div>
             </div>
