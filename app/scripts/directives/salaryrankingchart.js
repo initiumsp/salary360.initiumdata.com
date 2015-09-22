@@ -139,7 +139,6 @@ angular.module('salary360initiumdatacomApp')
           var width = actualWidth - margin.left - margin.right;
           var height = actualHeight - margin.top - margin.bottom;
 
-
           var x = d3.scale.ordinal()
             .rangeRoundBands([0, width], 0.1);
 
@@ -162,23 +161,18 @@ angular.module('salary360initiumdatacomApp')
 
           d3.csv(apiUrl,
             function(d){
-              var svg = d3.select(".chart");
+              var svg = d3.select("svg.chart#salary-chart");
               svg.selectAll("g").remove();
               svg.selectAll("rect").remove();
               svg.selectAll("text").remove();
               svg.append("g")
                 .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-              //window.d = d;
-              //console.log('data:');
-              //console.log(d);
               var data = d.map(function(x){
                 return [x.row, x.value];
               });
 
               var ranking = calculateRanking(d, scope.salary, salaryRangeMapping);
-              //console.log(ranking);
-              //document.querySelector('.message').appendChild()
 
               var divMessageNumber = d3.select('.message-number');
               divMessageNumber.selectAll('div').remove();
