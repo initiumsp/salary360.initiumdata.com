@@ -121,11 +121,14 @@
               </div>
             </a>
           </div>
+          <!--{{ua}}-->
+          <!--{{ isWechatBrowser }}-->
           <div id="wechat-share-prompt">
-            <div class="wechat-on-desktop" ng-show="{{isWeixinBrowser()}}">
+            <div class="wechat-on-desktop" ng-show="{{ !isWechatBrowser }}">
+              请用微信扫描二维码打开
               <div id="qrcode"><img src="images/qrcode2.png"/></div>
             </div>
-            <div class="wechat-on-wechat-browser" ng-show="{{!isWeixinBrowser()}}">
+            <div class="wechat-on-wechat-browser" ng-show="{{ isWechatBrowser }}">
               <div>请点击微信右上角的"..."，并分享给朋友</div>
             </div>
           </div>

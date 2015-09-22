@@ -260,14 +260,12 @@ angular.module('salary360initiumdatacomApp')
 
     $('input[type="range"]').val(10).change();
 
-    $scope.isWeixinBrowser = function(){
-      var ua = navigator.userAgent.toLowerCase();
-      if(ua.match(/MicroMessenger/i)=="micromessenger") {
-        return true;
-      } else {
-        return false;
-      }
-    };
+    $scope.ua = window.navigator.userAgent.toLowerCase();
+    if($scope.ua.match(/MicroMessenger/i)=="micromessenger") {
+      $scope.isWechatBrowser = true;
+    } else {
+      $scope.isWechatBrowser = false;
+    }
 
     $('#wechat-share-prompt').hide();
     $scope.toggleWechatShare = function(){
