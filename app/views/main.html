@@ -113,19 +113,22 @@
               </div>
             </a>
           </div>
-          <div class="wechat" id="btnWechatShare" ng-click="shareToWechat()">
+          <div class="wechat" id="btnWechatShare" ng-click="toggleWechatShare()">
             <a href="" id="anchorWechatShare">
               <div class="share">
                 <img src="images/wechat_96x96_white.png">
               </div>
             </a>
           </div>
-          <div id="qrcode"><img src="images/qrcode2.png"/></div>
+          <div id="wechat-share-prompt">
+            <div class="wechat-on-desktop" ng-show="{{isWeixinBrowser()}}">
+              <div id="qrcode"><img src="images/qrcode2.png"/></div>
+            </div>
+            <div class="wechat-on-wechat-browser" ng-show="{{!isWeixinBrowser()}}">
+              <div>请点击微信右上角的"..."，并分享给朋友</div>
+            </div>
+          </div>
         </div>
-        <div class="initiumlogo">
-          <img src="images/logo_inside_white.png">
-        </div>
-        {{isWeixinBrowser()}}
       </div>
     </div>
 
@@ -150,11 +153,3 @@
   </div>
 </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script>
-  $(document).ready(function(){
-    $("#btnWechatShare").click(function(){
-        $("#qrcode").toggle();
-    });
-  });
-  </script>

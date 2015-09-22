@@ -267,6 +267,11 @@ angular.module('salary360initiumdatacomApp')
       } else {
         return false;
       }
+    };
+
+    $('#wechat-share-prompt').hide();
+    $scope.toggleWechatShare = function(){
+      $('#wechat-share-prompt').toggle();
     }
 
   }]);
