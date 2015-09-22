@@ -129,18 +129,20 @@ angular.module('salary360initiumdatacomApp')
     $scope.post('render', window.location.href);
 
     $scope.handleWeiboShare = function(){
-      var title = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】'),
-        url = encodeURIComponent('salary360.initiumlab.com');
+      var title = encodeURIComponent('月入一万，放在香港是啥水平？快戳这里算一算你在香港还是不是个壕!');
+      //var url = encodeURIComponent('salary360-wechat.initiumlab.com');
+      var url = window.location.href;
       var target_url = 'http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+url;
       window.open(target_url);
       $scope.post('share', 'weibo');
     };
 
     $scope.handleFacebookShare = function(){
-      var description = encodeURIComponent('月入一萬,放在香港是個啥水平?快戳這裡算一算你在香港還是不是個壕!【 Initium Lab 出品,玩轉大數據】'),
-        url = encodeURI('salary360.initiumlab.com'),
-        title = encodeURIComponent('18區人工大比拼'),
-        imageURL = encodeURIComponent(url + './images/cover-share.png');
+      var description = encodeURIComponent('月入一万，放在香港是啥水平？快戳这里算一算你在香港还是不是个壕!');
+      //var url = encodeURI('salary360-wechat.initiumlab.com');
+      var url = window.location.href;
+      var title = encodeURIComponent('18區人工大比拼');
+      var imageURL = encodeURIComponent(url + './images/cover-share.png');
       //var target_href = 'https://www.facebook.com/dialog/feed?app_id=1180811835286005' +
       //  '&link=' + url +
       //  '&picture=' + imageURL +
