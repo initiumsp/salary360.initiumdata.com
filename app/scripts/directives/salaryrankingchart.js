@@ -201,7 +201,6 @@ angular.module('salary360initiumdatacomApp')
               var percentage = Math.floor(ranking.ratio * 100) + '%';
 
               divMessageNumber.append('div')
-             //   .text('您的月收入擊敗了該區' + Math.floor(ranking.ratio * 100) + '% 的' + genderToName[scope.gender])
                 .text(percentage)
                 .attr('class', 'message-number');
 
@@ -245,58 +244,9 @@ angular.module('salary360initiumdatacomApp')
 
               iconDiv.selectAll('img').style('visibility', 'hidden');
               iconDiv.select('.icon-' + number).style('visibility', 'visible');
-                //.append('div')
-                //.html('<img src="images/icon' + number + '.png">')
-                //.attr('class', 'icon');
-
-
-              //Social Functions
-
-              ////TODO: ONLINE
-              ////      Change to the deployment server address
-              //var shareURLSina = 'http://v.t.sina.com.cn/share/share.php?title=我的收入擊敗了'
-              //  + percentage
-              //  + '的香港'
-              //  + genderToName[scope.gender]
-              //  + '，快來試試你的吧&amp;url=http://192.168.1.6/salary360/';
-              //d3.select('.social .weibo a').attr('href', shareURLSina);
-              //
-              //var description = encodeURIComponent('我的收入擊敗了' + percentage + '的香港' + genderToName[scope.gender] + '，快來試試你的吧');
-              //var url = encodeURIComponent('http://bc3f09dc.ngrok.io');
-              //var title = document.getElementsByTagName('h1')[0].innerText;
-              //
-              //var shareURLFacebook = 'https://www.facebook.com/dialog/feed?app_id=1651657371748354' +
-              //  '&link=' + url +
-              //  '&name=' + title +
-              //  '&description=' + description +
-              //  '&redirect_uri=' + url;
-              //d3.select('.social .facebook a').attr('href', shareURLFacebook);
-
-              //ranking['ratio']
 
               x.domain(data.map(function(d) { return d[0]; }));
               y.domain([0, 1.2 * d3.max(data, function(d) { return +d[1]; })]);
-
-
-              //svg.append("g")
-              //  .attr("class", "x axis")
-              //  .attr("transform", "translate(0," + height + ")")
-              //  .call(xAxis);
-
-              ////svg.append("g")
-              //svg
-              //  //.attr("class", "y axis")
-              //  //.call(yAxis)
-              //  .append("text")
-              //  .attr("y", 0)
-              //  .attr("x", 0)
-              //  .attr("dx", "7em")
-              //  .attr("dy", "1em")
-              //  //.attr("transform", "rotate(-15)")
-              //  //.attr("dy", ".71em")
-              //  //.style("text-anchor", "end")
-              //  .text("該區月收入分佈")
-              //  .attr('class', 'figure-title');
 
               var updates = svg.selectAll(".bar").data(data);
               updates.exit().remove();
@@ -308,9 +258,6 @@ angular.module('salary360initiumdatacomApp')
                 .attr("height", function(d) { return height - y(d[1]); });
               //window.u = updates;
               d3.selectAll(".bar").filter(function(d){
-                //console.log("once");
-                //console.log(d);
-                //console.log(ranking);
                 return d[0] === ranking.binName;
               }).attr("class", "bar highlight");
 
@@ -327,10 +274,6 @@ angular.module('salary360initiumdatacomApp')
                 .attr("class", "text highlight");
             });
 
-          //function type(d) {
-          //  d.frequency = +d.frequency;
-          //  return d;
-          //}
         };
 
         scope.$watch('area', function(){render(d3);});
