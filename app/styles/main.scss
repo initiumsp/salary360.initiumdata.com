@@ -26,14 +26,13 @@ html, body, div {
   background-color: rgb(141,207,207);
   padding-bottom: 0.5em;
   .social {
-    text-align: center;
-    padding: 30px 30px 30px;
+    text-align: left;
+    padding: 30px 0px 10px;
     display: inline-block;
-    width: 70%;
+    width: 44%;
     a :hover {
       background-color: #014441;
     }
-    margin-bottom: 1em;
   }
   .info-initiumlab {
     text-align: center;
@@ -49,14 +48,14 @@ html, body, div {
 
 .initiumlogo {
   display: inline-block;
-  width: 25%;
-  padding: 20px 0px 30px;
-  margin-bottom: 1em;
-  float: right;
+  width: 50px;
+  padding: 0px;
+  vertical-align: top;
 }
 
 .initiumlogo img {
-  width: 60px;
+  width: 45px;
+  vertical-align: none;
 }
 
 h1 {
@@ -235,22 +234,19 @@ body {
 .weibo {
   width: 36px;
   display: inline-block;
-  float: left;
-  margin-right: 10px
+  margin-right: 0px
 }
 
 .facebook {
-  width: 36px;
-  display: inline-block;
-  float: left;
-  margin-right: 10px
+    width: 36px;
+    display: inline-block;
+    margin-right: 0px;
 }
 
 .wechat {
   width: 36px;
   display: inline-block;
-  float: left;
-  margin-right: 10px
+  margin-right: 0px
 }
 
 select.form-control {
@@ -329,6 +325,34 @@ margin-left: -30px;
 
 #qrcode img{
   width: 150px;
+}
+
+.initium {
+  text-align: right;
+  display: inline-block;
+  width: 54%;
+  padding: 30px 0px 10px;
+}
+
+.initiumlink {
+  width:80px;
+  display: inline-block;
+  padding: 0px;
+  font-size: 0.8em;
+  line-height: 20px;
+}
+.initiumlinkItem {
+  border-bottom: 1px dotted #333;
+}
+
+.initiumlinkItem:hover {
+  border-bottom: 1px solid #333;
+  cursor: pointer;
+}
+
+.initiumlinkItem a:link, .initiumlinkItem a:visited {
+  color: #014441;
+  text-decoration: none;
 }
 
 /* Andy */
