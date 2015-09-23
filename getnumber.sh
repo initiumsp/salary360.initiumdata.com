@@ -24,6 +24,6 @@ psql_cmd="psql -A -F":" -h localhost -p 5432 -d memory_db -U memory -a -c "
 while [[ true ]]; do
 	#$psql_cmd "select key,count(*) from event where eventname='salary360' group by key;" | tail -n +3 | head -n -1
 	$psql_cmd "select key,count(*) from event where eventname='salary360' and id>1172476 group by key;" | tail -n +3 | head -n -1
-	sleep 2
+	sleep 5
 done
 
