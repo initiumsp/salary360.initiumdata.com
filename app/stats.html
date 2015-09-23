@@ -1,5 +1,36 @@
 <!DOCTYPE html>
 
+<style>
+body {
+	font-size: 22px;
+	/*background: #31AFBE;*/
+	/*background: #014441;*/
+	background: black;
+	color: #0DFB0B; 
+	/* lightgreen;*/
+}
+h1 {
+	margin-top: 1em;
+	text-align: center;
+}
+#main {
+	width:400px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 2em
+}
+#main .value {
+	float: right;
+}
+#main .colon {
+	display: none;
+}
+</style>
+
+<h1>
+Salary Dashboard
+</h1>
+
 <div id="main">
 
 </div>
@@ -35,7 +66,7 @@
 				main.appendChild(div);
 				el = document.getElementById(key);
 			}
-			el.innerHTML = key + ":" + value;
+			el.innerHTML = '<span class="key">' + key + '</span>' + '<span class="colon">:</span> <span class="value">' + value + '</span>';
 		};
 
 		addOrModify(key, value);
