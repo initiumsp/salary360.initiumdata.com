@@ -64,7 +64,7 @@ angular.module('salary360initiumdatacomApp')
     // Tracking code begin
 
     xdomain.slaves({
-      "http://s.init.im:8081": "/proxy.html"
+      "https://ss.initiumlab.com": "/proxy.html"
     });
 
     $scope.setUUID = function() {
@@ -77,7 +77,7 @@ angular.module('salary360initiumdatacomApp')
           if (localStorage.getItem('uuid')) {
             this.uuid = localStorage.getItem('uuid');
           } else {
-            var url = 'http://s.init.im:8081/utility/uuid/';
+            var url = 'https://ss.initiumlab.com/utility/uuid/';
             var uuid = 'DEFAULT'+Math.random().toString(); // In case UUID server fails
             this.uuid = uuid;
             localStorage.setItem('uuid', uuid);
@@ -108,7 +108,7 @@ angular.module('salary360initiumdatacomApp')
 
     $scope.post = function(keyToPost, valueToPost) {
       "use strict";
-      var url = "http://s.init.im:8081/remember/salary360/";
+      var url = "https://ss.initiumlab.com/remember/salary360/";
       var request = new XMLHttpRequest();
       var message = {
         username: $scope.uuid,
